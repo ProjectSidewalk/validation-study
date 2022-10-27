@@ -1,0 +1,5 @@
+# are ignoring these folders lol
+_archive/
+chicago_gsv_download/
+chicago_with_icons/
+.ipynb_checkpoints/
