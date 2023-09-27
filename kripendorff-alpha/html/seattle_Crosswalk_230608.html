@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f37f55bb7183fcf7c6ccf5de905e868b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>$( function() {
+        $( ".maplegend" ).draggable({
+            start: function (event, ui) {
+                $(this).css({
+                    right: "auto",
+                    top: "auto",
+                    bottom: "auto"
+                });
+            }
+        });
+    });
+    </script>
+    <style type='text/css'>
+      .maplegend {
+        position: absolute;
+        z-index:9999;
+        background-color: rgba(255, 255, 255, .8);
+        border-radius: 5px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        padding: 10px;
+        font: 12px/14px Arial, Helvetica, sans-serif;
+        right: 10px;
+        bottom: 20px;
+      }
+      .maplegend .legend-title {
+        text-align: left;
+        margin-bottom: 5px;
+        font-weight: bold;
+        }
+      .maplegend .legend-scale ul {
+        margin: 0;
+        margin-bottom: 0px;
+        padding: 0;
+        float: left;
+        list-style: none;
+        }
+      .maplegend .legend-scale ul li {
+        list-style: none;
+        margin-left: 0;
+        line-height: 16px;
+        margin-bottom: 2px;
+        }
+      .maplegend ul.legend-labels li span {
+        display: block;
+        float: left;
+        height: 14px;
+        width: 14px;
+        margin-right: 5px;
+        margin-left: 0;
+        border: 0px solid #ccc;
+        }
+      .maplegend .legend-source {
+        color: #777;
+        clear: both;
+        }
+      .maplegend a {
+        color: #777;
+        }
+    </style>
+    
+</head>
+<body>    
+    
+    <div id='maplegend label_type' class='maplegend'>
+        <div class='legend-title'>label_type</div>
+        <div class='legend-scale'>
+            <ul class='legend-labels'>
+                <li><span style='background:#FABF1C'></span>Crosswalk</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+            <div class="folium-map" id="map_f37f55bb7183fcf7c6ccf5de905e868b" ></div>
+        
+</body>
+<script>    
+    
+            var map_f37f55bb7183fcf7c6ccf5de905e868b = L.map(
+                "map_f37f55bb7183fcf7c6ccf5de905e868b",
+                {
+                    center: [47.6389560699463, -122.36701583862299],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_f37f55bb7183fcf7c6ccf5de905e868b);
+
+            
+
+        
+    
+            var tile_layer_e4833f33369cc83c900393eeef60af99 = L.tileLayer(
+                "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_f37f55bb7183fcf7c6ccf5de905e868b);
+        
+    
+            map_f37f55bb7183fcf7c6ccf5de905e868b.fitBounds(
+                [[47.5999717712402, -122.398391723633], [47.6779403686524, -122.335639953613]],
+                {}
+            );
+        
+    
+        function geo_json_1d4b3f7f33b56ef16c29c63e2d75142e_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#FFFFFF", "fillColor": "#FFFFFF", "fillOpacity": 0.2, "stroke": true, "weight": 2};
+            }
+        }
+        function geo_json_1d4b3f7f33b56ef16c29c63e2d75142e_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_1d4b3f7f33b56ef16c29c63e2d75142e_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1.5, "stroke": true, "weight": 3};
+            
+            let style = geo_json_1d4b3f7f33b56ef16c29c63e2d75142e_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.circle(latlng, opts)
+        }
+
+        function geo_json_1d4b3f7f33b56ef16c29c63e2d75142e_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_1d4b3f7f33b56ef16c29c63e2d75142e.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_1d4b3f7f33b56ef16c29c63e2d75142e_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_1d4b3f7f33b56ef16c29c63e2d75142e = L.geoJson(null, {
+                onEachFeature: geo_json_1d4b3f7f33b56ef16c29c63e2d75142e_onEachFeature,
+            
+                style: geo_json_1d4b3f7f33b56ef16c29c63e2d75142e_styler,
+                pointToLayer: geo_json_1d4b3f7f33b56ef16c29c63e2d75142e_pointToLayer
+        });
+
+        function geo_json_1d4b3f7f33b56ef16c29c63e2d75142e_add (data) {
+            geo_json_1d4b3f7f33b56ef16c29c63e2d75142e
+                .addData(data)
+                .addTo(map_f37f55bb7183fcf7c6ccf5de905e868b);
+        }
+            geo_json_1d4b3f7f33b56ef16c29c63e2d75142e_add({"bbox": [-122.398391723633, 47.5999717712402, -122.335639953613, 47.6779403686524], "features": [{"bbox": [-122.335998535156, 47.6004180908203, -122.335998535156, 47.6004180908203], "geometry": {"coordinates": [-122.335998535156, 47.6004180908203], "type": "Point"}, "id": "123", "properties": {"Unnamed: 0": 251, "__folium_color": "#FFFFFF", "cluster_id": 22, "clustered": false, "correct": "t", "description": null, "gsv_panorama_id": "4Q1kZf3mWO6o4XKS-k88Vw", "label_id": 251, "label_type": "Crosswalk", "lat": 47.6004180908203, "lng": -122.335998535156, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 249, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.398391723633, 47.6779403686524, -122.398391723633, 47.6779403686524], "geometry": {"coordinates": [-122.398391723633, 47.6779403686524], "type": "Point"}, "id": "551", "properties": {"Unnamed: 0": 1022, "__folium_color": "#FFFFFF", "cluster_id": 20, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "YJtUz5AEW107uT-RH39V7Q", "label_id": 1022, "label_type": "Crosswalk", "lat": 47.6779403686524, "lng": -122.398391723633, "neighborhood": "Ballard", "severity": 2.0, "street_edge_id": 44, "tag_list": "broken surface", "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.335655212402, 47.5999717712402, -122.335655212402, 47.5999717712402], "geometry": {"coordinates": [-122.335655212402, 47.5999717712402], "type": "Point"}, "id": "1005", "properties": {"Unnamed: 0": 1750, "__folium_color": "#FFFFFF", "cluster_id": 25, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "VPJ7B65MI4FcyjBLZw5sMQ", "label_id": 1750, "label_type": "Crosswalk", "lat": 47.5999717712402, "lng": -122.335655212402, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 244, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.335639953613, 47.6001014709473, -122.335639953613, 47.6001014709473], "geometry": {"coordinates": [-122.335639953613, 47.6001014709473], "type": "Point"}, "id": "1008", "properties": {"Unnamed: 0": 1753, "__folium_color": "#FFFFFF", "cluster_id": 23, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "VPJ7B65MI4FcyjBLZw5sMQ", "label_id": 1753, "label_type": "Crosswalk", "lat": 47.6001014709473, "lng": -122.335639953613, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 254, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.335670471191, 47.6008071899414, -122.335670471191, 47.6008071899414], "geometry": {"coordinates": [-122.335670471191, 47.6008071899414], "type": "Point"}, "id": "1011", "properties": {"Unnamed: 0": 1756, "__folium_color": "#FFFFFF", "cluster_id": 21, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "mxtNzVrYy81dM6yZCmScvg", "label_id": 1756, "label_type": "Crosswalk", "lat": 47.6008071899414, "lng": -122.335670471191, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 242, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_1d4b3f7f33b56ef16c29c63e2d75142e.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let aliases = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_1d4b3f7f33b56ef16c29c63e2d75142e.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let aliases = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+    
+        function geo_json_f4008e74608e07cb36c8517e1ab7bf2e_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#FABF1C", "fillColor": "#FABF1C", "fillOpacity": 0.6, "stroke": true, "weight": 2};
+            }
+        }
+        function geo_json_f4008e74608e07cb36c8517e1ab7bf2e_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_f4008e74608e07cb36c8517e1ab7bf2e_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1.5, "stroke": true, "weight": 3};
+            
+            let style = geo_json_f4008e74608e07cb36c8517e1ab7bf2e_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.circle(latlng, opts)
+        }
+
+        function geo_json_f4008e74608e07cb36c8517e1ab7bf2e_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_f4008e74608e07cb36c8517e1ab7bf2e.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_f4008e74608e07cb36c8517e1ab7bf2e_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_f4008e74608e07cb36c8517e1ab7bf2e = L.geoJson(null, {
+                onEachFeature: geo_json_f4008e74608e07cb36c8517e1ab7bf2e_onEachFeature,
+            
+                style: geo_json_f4008e74608e07cb36c8517e1ab7bf2e_styler,
+                pointToLayer: geo_json_f4008e74608e07cb36c8517e1ab7bf2e_pointToLayer
+        });
+
+        function geo_json_f4008e74608e07cb36c8517e1ab7bf2e_add (data) {
+            geo_json_f4008e74608e07cb36c8517e1ab7bf2e
+                .addData(data)
+                .addTo(map_f37f55bb7183fcf7c6ccf5de905e868b);
+        }
+            geo_json_f4008e74608e07cb36c8517e1ab7bf2e_add({"bbox": [-122.363182067871, 47.5211143493652, -122.320739746094, 47.6614723205566], "features": [{"bbox": [-122.320869445801, 47.6613159179688, -122.320869445801, 47.6613159179688], "geometry": {"coordinates": [-122.320869445801, 47.6613159179688], "type": "Point"}, "id": "6", "properties": {"Unnamed: 0": 14, "__folium_color": "#FABF1C", "cluster_id": 9, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "O0VZ-MF6Nrmjhkb2nCRhCw", "label_id": 14, "label_type": "Crosswalk", "lat": 47.6613159179688, "lng": -122.320869445801, "neighborhood": "University District", "severity": 2.0, "street_edge_id": 482, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.320777893066, 47.661205291748, -122.320777893066, 47.661205291748], "geometry": {"coordinates": [-122.320777893066, 47.661205291748], "type": "Point"}, "id": "7", "properties": {"Unnamed: 0": 15, "__folium_color": "#FABF1C", "cluster_id": 8, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "O0VZ-MF6Nrmjhkb2nCRhCw", "label_id": 15, "label_type": "Crosswalk", "lat": 47.661205291748, "lng": -122.320777893066, "neighborhood": "University District", "severity": 2.0, "street_edge_id": 480, "tag_list": "paint fading", "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.320739746094, 47.6614608764649, -122.320739746094, 47.6614608764649], "geometry": {"coordinates": [-122.320739746094, 47.6614608764649], "type": "Point"}, "id": "16", "properties": {"Unnamed: 0": 28, "__folium_color": "#FABF1C", "cluster_id": 7, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "qCkbp2lszdGrR5s3hdSiTQ", "label_id": 28, "label_type": "Crosswalk", "lat": 47.6614608764649, "lng": -122.320739746094, "neighborhood": "University District", "severity": 3.0, "street_edge_id": 483, "tag_list": "paint fading", "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.334213256836, 47.6009635925293, -122.334213256836, 47.6009635925293], "geometry": {"coordinates": [-122.334213256836, 47.6009635925293], "type": "Point"}, "id": "76", "properties": {"Unnamed: 0": 198, "__folium_color": "#FABF1C", "cluster_id": 16, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "1mcZ_CqLAp3r4RPkBcqWYg", "label_id": 198, "label_type": "Crosswalk", "lat": 47.6009635925293, "lng": -122.334213256836, "neighborhood": "International District", "severity": 2.0, "street_edge_id": 179, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.334083557129, 47.6008949279785, -122.334083557129, 47.6008949279785], "geometry": {"coordinates": [-122.334083557129, 47.6008949279785], "type": "Point"}, "id": "78", "properties": {"Unnamed: 0": 200, "__folium_color": "#FABF1C", "cluster_id": 17, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "BsqrOdDSbJWA6WB0NVJeiA", "label_id": 200, "label_type": "Crosswalk", "lat": 47.6008949279785, "lng": -122.334083557129, "neighborhood": "International District", "severity": 2.0, "street_edge_id": 208, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.334205627441, 47.6008071899414, -122.334205627441, 47.6008071899414], "geometry": {"coordinates": [-122.334205627441, 47.6008071899414], "type": "Point"}, "id": "80", "properties": {"Unnamed: 0": 202, "__folium_color": "#FABF1C", "cluster_id": 18, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "BsqrOdDSbJWA6WB0NVJeiA", "label_id": 202, "label_type": "Crosswalk", "lat": 47.6008071899414, "lng": -122.334205627441, "neighborhood": "International District", "severity": 2.0, "street_edge_id": 203, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.334365844727, 47.6008834838867, -122.334365844727, 47.6008834838867], "geometry": {"coordinates": [-122.334365844727, 47.6008834838867], "type": "Point"}, "id": "88", "properties": {"Unnamed: 0": 212, "__folium_color": "#FABF1C", "cluster_id": 15, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "1mcZ_CqLAp3r4RPkBcqWYg", "label_id": 212, "label_type": "Crosswalk", "lat": 47.6008834838867, "lng": -122.334365844727, "neighborhood": "International District", "severity": 2.0, "street_edge_id": 190, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.335479736328, 47.6008911132813, -122.335479736328, 47.6008911132813], "geometry": {"coordinates": [-122.335479736328, 47.6008911132813], "type": "Point"}, "id": "103", "properties": {"Unnamed: 0": 227, "__folium_color": "#FABF1C", "cluster_id": 19, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "f4p1g4gBWGcBH_vl47_A8Q", "label_id": 227, "label_type": "Crosswalk", "lat": 47.6008911132813, "lng": -122.335479736328, "neighborhood": "International District", "severity": 2.0, "street_edge_id": 243, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.335510253906, 47.6000480651855, -122.335510253906, 47.6000480651855], "geometry": {"coordinates": [-122.335510253906, 47.6000480651855], "type": "Point"}, "id": "115", "properties": {"Unnamed: 0": 239, "__folium_color": "#FABF1C", "cluster_id": 24, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "ZMVFCSQHaz1q8y3LB_IyOw", "label_id": 239, "label_type": "Crosswalk", "lat": 47.6000480651855, "lng": -122.335510253906, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 184, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.33430480957, 47.6000595092773, -122.33430480957, 47.6000595092773], "geometry": {"coordinates": [-122.33430480957, 47.6000595092773], "type": "Point"}, "id": "147", "properties": {"Unnamed: 0": 275, "__folium_color": "#FABF1C", "cluster_id": 13, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "INMdYPF8xUfI6ejYr4FJSg", "label_id": 275, "label_type": "Crosswalk", "lat": 47.6000595092773, "lng": -122.33430480957, "neighborhood": "International District", "severity": 2.0, "street_edge_id": 258, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.334213256836, 47.6001319885254, -122.334213256836, 47.6001319885254], "geometry": {"coordinates": [-122.334213256836, 47.6001319885254], "type": "Point"}, "id": "149", "properties": {"Unnamed: 0": 277, "__folium_color": "#FABF1C", "cluster_id": 12, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "OWNgD8J2GJshv4aKP60Cyg", "label_id": 277, "label_type": "Crosswalk", "lat": 47.6001319885254, "lng": -122.334213256836, "neighborhood": "International District", "severity": 2.0, "street_edge_id": 203, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.334228515625, 47.5999488830566, -122.334228515625, 47.5999488830566], "geometry": {"coordinates": [-122.334228515625, 47.5999488830566], "type": "Point"}, "id": "152", "properties": {"Unnamed: 0": 280, "__folium_color": "#FABF1C", "cluster_id": 14, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "OWNgD8J2GJshv4aKP60Cyg", "label_id": 280, "label_type": "Crosswalk", "lat": 47.5999488830566, "lng": -122.334228515625, "neighborhood": "International District", "severity": 2.0, "street_edge_id": 205, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.334037780762, 47.6000518798828, -122.334037780762, 47.6000518798828], "geometry": {"coordinates": [-122.334037780762, 47.6000518798828], "type": "Point"}, "id": "153", "properties": {"Unnamed: 0": 281, "__folium_color": "#FABF1C", "cluster_id": 11, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "b3dGUff4tPdUnnRGTmERBQ", "label_id": 281, "label_type": "Crosswalk", "lat": 47.6000518798828, "lng": -122.334037780762, "neighborhood": "International District", "severity": 2.0, "street_edge_id": 206, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.360931396484, 47.6457366943359, -122.360931396484, 47.6457366943359], "geometry": {"coordinates": [-122.360931396484, 47.6457366943359], "type": "Point"}, "id": "241", "properties": {"Unnamed: 0": 374, "__folium_color": "#FABF1C", "cluster_id": 10, "clustered": true, "correct": "t", "description": "some cracks", "gsv_panorama_id": "-7HQzRQAxp2tbIY2xp2sRg", "label_id": 374, "label_type": "Crosswalk", "lat": 47.6457366943359, "lng": -122.360931396484, "neighborhood": "Queen Anne", "severity": 2.0, "street_edge_id": 283, "tag_list": "uneven surface", "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.355155944824, 47.5211219787598, -122.355155944824, 47.5211219787598], "geometry": {"coordinates": [-122.355155944824, 47.5211219787598], "type": "Point"}, "id": "658", "properties": {"Unnamed: 0": 1186, "__folium_color": "#FABF1C", "cluster_id": 6, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "_uNAA6ty6HsPf-_XWwkLvg", "label_id": 1186, "label_type": "Crosswalk", "lat": 47.5211219787598, "lng": -122.355155944824, "neighborhood": "Highland Park", "severity": 2.0, "street_edge_id": 601, "tag_list": "paint fading,broken surface", "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.361686706543, 47.5501136779785, -122.361686706543, 47.5501136779785], "geometry": {"coordinates": [-122.361686706543, 47.5501136779785], "type": "Point"}, "id": "744", "properties": {"Unnamed: 0": 1298, "__folium_color": "#FABF1C", "cluster_id": 1, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "GXmubWpUv9Adwm-xU2dXyA", "label_id": 1298, "label_type": "Crosswalk", "lat": 47.5501136779785, "lng": -122.361686706543, "neighborhood": "Delridge", "severity": 2.0, "street_edge_id": 498, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.362892150879, 47.5501136779785, -122.362892150879, 47.5501136779785], "geometry": {"coordinates": [-122.362892150879, 47.5501136779785], "type": "Point"}, "id": "775", "properties": {"Unnamed: 0": 1331, "__folium_color": "#FABF1C", "cluster_id": 5, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "XzYxlBOKsVVLigVmYLNdZw", "label_id": 1331, "label_type": "Crosswalk", "lat": 47.5501136779785, "lng": -122.362892150879, "neighborhood": "Delridge", "severity": 1.0, "street_edge_id": 72, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.363182067871, 47.5501098632813, -122.363182067871, 47.5501098632813], "geometry": {"coordinates": [-122.363182067871, 47.5501098632813], "type": "Point"}, "id": "779", "properties": {"Unnamed: 0": 1335, "__folium_color": "#FABF1C", "cluster_id": 3, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "wsBIBUeHFITn9E_c516ysw", "label_id": 1335, "label_type": "Crosswalk", "lat": 47.5501098632813, "lng": -122.363182067871, "neighborhood": "Delridge", "severity": 1.0, "street_edge_id": 71, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.36304473877, 47.5500144958496, -122.36304473877, 47.5500144958496], "geometry": {"coordinates": [-122.36304473877, 47.5500144958496], "type": "Point"}, "id": "786", "properties": {"Unnamed: 0": 1342, "__folium_color": "#FABF1C", "cluster_id": 2, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "wsBIBUeHFITn9E_c516ysw", "label_id": 1342, "label_type": "Crosswalk", "lat": 47.5500144958496, "lng": -122.36304473877, "neighborhood": "Delridge", "severity": 1.0, "street_edge_id": 117, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.363021850586, 47.5502052307129, -122.363021850586, 47.5502052307129], "geometry": {"coordinates": [-122.363021850586, 47.5502052307129], "type": "Point"}, "id": "788", "properties": {"Unnamed: 0": 1344, "__folium_color": "#FABF1C", "cluster_id": 4, "clustered": true, "correct": "t", "description": null, "gsv_panorama_id": "JKwxl4dFPf2JLummqWctIg", "label_id": 1344, "label_type": "Crosswalk", "lat": 47.5502052307129, "lng": -122.363021850586, "neighborhood": "Delridge", "severity": 1.0, "street_edge_id": 111, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-122.335456848145, 47.6000480651855, -122.335456848145, 47.6000480651855], "geometry": {"coordinates": [-122.335456848145, 47.6000480651855], "type": "Point"}, "id": "1003", "properties": {"Unnamed: 0": 1747, "__folium_color": "#FABF1C", "cluster_id": 24, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "drtv7al1bzc-NdQy8ZNqYg", "label_id": 1747, "label_type": "Crosswalk", "lat": 47.6000480651855, "lng": -122.335456848145, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 184, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.335464477539, 47.6008911132813, -122.335464477539, 47.6008911132813], "geometry": {"coordinates": [-122.335464477539, 47.6008911132813], "type": "Point"}, "id": "1016", "properties": {"Unnamed: 0": 1761, "__folium_color": "#FABF1C", "cluster_id": 19, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "kTkiUSCpa3xjRTPKAWLzYA", "label_id": 1761, "label_type": "Crosswalk", "lat": 47.6008911132813, "lng": -122.335464477539, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 243, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.334205627441, 47.6007957458496, -122.334205627441, 47.6007957458496], "geometry": {"coordinates": [-122.334205627441, 47.6007957458496], "type": "Point"}, "id": "1027", "properties": {"Unnamed: 0": 1807, "__folium_color": "#FABF1C", "cluster_id": 18, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "P-v591_0D98yQOAP9xjFEQ", "label_id": 1807, "label_type": "Crosswalk", "lat": 47.6007957458496, "lng": -122.334205627441, "neighborhood": "International District", "severity": 2.0, "street_edge_id": 203, "tag_list": "broken surface", "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.334060668945, 47.6008911132813, -122.334060668945, 47.6008911132813], "geometry": {"coordinates": [-122.334060668945, 47.6008911132813], "type": "Point"}, "id": "1031", "properties": {"Unnamed: 0": 1811, "__folium_color": "#FABF1C", "cluster_id": 17, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "P-v591_0D98yQOAP9xjFEQ", "label_id": 1811, "label_type": "Crosswalk", "lat": 47.6008911132813, "lng": -122.334060668945, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 208, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.334190368652, 47.6009750366211, -122.334190368652, 47.6009750366211], "geometry": {"coordinates": [-122.334190368652, 47.6009750366211], "type": "Point"}, "id": "1032", "properties": {"Unnamed: 0": 1812, "__folium_color": "#FABF1C", "cluster_id": 16, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "P-v591_0D98yQOAP9xjFEQ", "label_id": 1812, "label_type": "Crosswalk", "lat": 47.6009750366211, "lng": -122.334190368652, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 179, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.334365844727, 47.6008911132813, -122.334365844727, 47.6008911132813], "geometry": {"coordinates": [-122.334365844727, 47.6008911132813], "type": "Point"}, "id": "1034", "properties": {"Unnamed: 0": 1814, "__folium_color": "#FABF1C", "cluster_id": 15, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "P-v591_0D98yQOAP9xjFEQ", "label_id": 1814, "label_type": "Crosswalk", "lat": 47.6008911132813, "lng": -122.334365844727, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 190, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.33422088623, 47.5999641418457, -122.33422088623, 47.5999641418457], "geometry": {"coordinates": [-122.33422088623, 47.5999641418457], "type": "Point"}, "id": "1040", "properties": {"Unnamed: 0": 1821, "__folium_color": "#FABF1C", "cluster_id": 14, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "hEeDLi1QvzGthFzBc-cCjQ", "label_id": 1821, "label_type": "Crosswalk", "lat": 47.5999641418457, "lng": -122.33422088623, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 205, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.334365844727, 47.6000442504883, -122.334365844727, 47.6000442504883], "geometry": {"coordinates": [-122.334365844727, 47.6000442504883], "type": "Point"}, "id": "1041", "properties": {"Unnamed: 0": 1822, "__folium_color": "#FABF1C", "cluster_id": 13, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "hEeDLi1QvzGthFzBc-cCjQ", "label_id": 1822, "label_type": "Crosswalk", "lat": 47.6000442504883, "lng": -122.334365844727, "neighborhood": "International District", "severity": 2.0, "street_edge_id": 258, "tag_list": "paint fading", "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.334190368652, 47.6001358032227, -122.334190368652, 47.6001358032227], "geometry": {"coordinates": [-122.334190368652, 47.6001358032227], "type": "Point"}, "id": "1043", "properties": {"Unnamed: 0": 1824, "__folium_color": "#FABF1C", "cluster_id": 12, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "hEeDLi1QvzGthFzBc-cCjQ", "label_id": 1824, "label_type": "Crosswalk", "lat": 47.6001358032227, "lng": -122.334190368652, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 203, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.334045410156, 47.6000480651855, -122.334045410156, 47.6000480651855], "geometry": {"coordinates": [-122.334045410156, 47.6000480651855], "type": "Point"}, "id": "1045", "properties": {"Unnamed: 0": 1826, "__folium_color": "#FABF1C", "cluster_id": 11, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "pNGxHosB3qimkjxfRQ1mpA", "label_id": 1826, "label_type": "Crosswalk", "lat": 47.6000480651855, "lng": -122.334045410156, "neighborhood": "International District", "severity": 1.0, "street_edge_id": 206, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.360916137695, 47.6456832885742, -122.360916137695, 47.6456832885742], "geometry": {"coordinates": [-122.360916137695, 47.6456832885742], "type": "Point"}, "id": "1050", "properties": {"Unnamed: 0": 1831, "__folium_color": "#FABF1C", "cluster_id": 10, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "NNMXQE7IVesfoNlpllcWpA", "label_id": 1831, "label_type": "Crosswalk", "lat": 47.6456832885742, "lng": -122.360916137695, "neighborhood": "Queen Anne", "severity": 1.0, "street_edge_id": 283, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.320838928223, 47.6613311767578, -122.320838928223, 47.6613311767578], "geometry": {"coordinates": [-122.320838928223, 47.6613311767578], "type": "Point"}, "id": "1109", "properties": {"Unnamed: 0": 1897, "__folium_color": "#FABF1C", "cluster_id": 9, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "YFf5aHrB0DbjwI00YDfZiw", "label_id": 1897, "label_type": "Crosswalk", "lat": 47.6613311767578, "lng": -122.320838928223, "neighborhood": "University District", "severity": 1.0, "street_edge_id": 482, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.320777893066, 47.661190032959, -122.320777893066, 47.661190032959], "geometry": {"coordinates": [-122.320777893066, 47.661190032959], "type": "Point"}, "id": "1110", "properties": {"Unnamed: 0": 1898, "__folium_color": "#FABF1C", "cluster_id": 8, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "YFf5aHrB0DbjwI00YDfZiw", "label_id": 1898, "label_type": "Crosswalk", "lat": 47.661190032959, "lng": -122.320777893066, "neighborhood": "University District", "severity": 2.0, "street_edge_id": 480, "tag_list": "paint fading", "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.320755004883, 47.6614723205566, -122.320755004883, 47.6614723205566], "geometry": {"coordinates": [-122.320755004883, 47.6614723205566], "type": "Point"}, "id": "1116", "properties": {"Unnamed: 0": 1905, "__folium_color": "#FABF1C", "cluster_id": 7, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "qCkbp2lszdGrR5s3hdSiTQ", "label_id": 1905, "label_type": "Crosswalk", "lat": 47.6614723205566, "lng": -122.320755004883, "neighborhood": "University District", "severity": 3.0, "street_edge_id": 483, "tag_list": "paint fading", "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.355163574219, 47.5211143493652, -122.355163574219, 47.5211143493652], "geometry": {"coordinates": [-122.355163574219, 47.5211143493652], "type": "Point"}, "id": "1237", "properties": {"Unnamed: 0": 2114, "__folium_color": "#FABF1C", "cluster_id": 6, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "mVwXsZPWewcVr1skuRnnOQ", "label_id": 2114, "label_type": "Crosswalk", "lat": 47.5211143493652, "lng": -122.355163574219, "neighborhood": "Highland Park", "severity": 1.0, "street_edge_id": 601, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.362854003906, 47.5501098632813, -122.362854003906, 47.5501098632813], "geometry": {"coordinates": [-122.362854003906, 47.5501098632813], "type": "Point"}, "id": "1239", "properties": {"Unnamed: 0": 2169, "__folium_color": "#FABF1C", "cluster_id": 5, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "JKwxl4dFPf2JLummqWctIg", "label_id": 2169, "label_type": "Crosswalk", "lat": 47.5501098632813, "lng": -122.362854003906, "neighborhood": "Delridge", "severity": 1.0, "street_edge_id": 72, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.362991333008, 47.5501976013184, -122.362991333008, 47.5501976013184], "geometry": {"coordinates": [-122.362991333008, 47.5501976013184], "type": "Point"}, "id": "1243", "properties": {"Unnamed: 0": 2173, "__folium_color": "#FABF1C", "cluster_id": 4, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "JKwxl4dFPf2JLummqWctIg", "label_id": 2173, "label_type": "Crosswalk", "lat": 47.5501976013184, "lng": -122.362991333008, "neighborhood": "Delridge", "severity": 1.0, "street_edge_id": 111, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.363174438477, 47.5501098632813, -122.363174438477, 47.5501098632813], "geometry": {"coordinates": [-122.363174438477, 47.5501098632813], "type": "Point"}, "id": "1246", "properties": {"Unnamed: 0": 2176, "__folium_color": "#FABF1C", "cluster_id": 3, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "JKwxl4dFPf2JLummqWctIg", "label_id": 2176, "label_type": "Crosswalk", "lat": 47.5501098632813, "lng": -122.363174438477, "neighborhood": "Delridge", "severity": 1.0, "street_edge_id": 71, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.36304473877, 47.5500144958496, -122.36304473877, 47.5500144958496], "geometry": {"coordinates": [-122.36304473877, 47.5500144958496], "type": "Point"}, "id": "1249", "properties": {"Unnamed: 0": 2179, "__folium_color": "#FABF1C", "cluster_id": 2, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "JKwxl4dFPf2JLummqWctIg", "label_id": 2179, "label_type": "Crosswalk", "lat": 47.5500144958496, "lng": -122.36304473877, "neighborhood": "Delridge", "severity": 1.0, "street_edge_id": 117, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-122.361671447754, 47.5500564575195, -122.361671447754, 47.5500564575195], "geometry": {"coordinates": [-122.361671447754, 47.5500564575195], "type": "Point"}, "id": "1269", "properties": {"Unnamed: 0": 2199, "__folium_color": "#FABF1C", "cluster_id": 1, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "Zl0vM_twML0Pbfwv7Fg8Ww", "label_id": 2199, "label_type": "Crosswalk", "lat": 47.5500564575195, "lng": -122.361671447754, "neighborhood": "Delridge", "severity": 1.0, "street_edge_id": 498, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_f4008e74608e07cb36c8517e1ab7bf2e.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let aliases = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_f4008e74608e07cb36c8517e1ab7bf2e.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let aliases = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+    
+        function geo_json_a58325d10fba62730d0e2eb6c944b88a_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#BF616A", "fillColor": "#BF616A", "fillOpacity": 0.5, "opacity": 0.4, "stroke": true, "weight": 2};
+            }
+        }
+        function geo_json_a58325d10fba62730d0e2eb6c944b88a_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_a58325d10fba62730d0e2eb6c944b88a_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3};
+            
+            let style = geo_json_a58325d10fba62730d0e2eb6c944b88a_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_a58325d10fba62730d0e2eb6c944b88a_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_a58325d10fba62730d0e2eb6c944b88a.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_a58325d10fba62730d0e2eb6c944b88a_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_a58325d10fba62730d0e2eb6c944b88a = L.geoJson(null, {
+                onEachFeature: geo_json_a58325d10fba62730d0e2eb6c944b88a_onEachFeature,
+            
+                style: geo_json_a58325d10fba62730d0e2eb6c944b88a_styler,
+                pointToLayer: geo_json_a58325d10fba62730d0e2eb6c944b88a_pointToLayer
+        });
+
+        function geo_json_a58325d10fba62730d0e2eb6c944b88a_add (data) {
+            geo_json_a58325d10fba62730d0e2eb6c944b88a
+                .addData(data)
+                .addTo(map_f37f55bb7183fcf7c6ccf5de905e868b);
+        }
+            geo_json_a58325d10fba62730d0e2eb6c944b88a_add({"bbox": [-122.3983959, 47.5209595, -122.2634255, 47.696903], "features": [{"bbox": [-122.3983847, 47.677293, -122.3956922, 47.6773064], "geometry": {"coordinates": [[-122.3956922, 47.6773064], [-122.3963386, 47.6773032], [-122.3983847, 47.677293]], "type": "LineString"}, "id": "0", "properties": {"__folium_color": "#BF616A", "region_id": "9", "route_id": "", "street_edge_id": "13", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3956922, 47.6765936, -122.3956799, 47.6773064], "geometry": {"coordinates": [[-122.3956799, 47.6765936], [-122.3956922, 47.6773064]], "type": "LineString"}, "id": "1", "properties": {"__folium_color": "#BF616A", "region_id": "9", "route_id": "", "street_edge_id": "35", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3956941, 47.6758792, -122.3956799, 47.6765936], "geometry": {"coordinates": [[-122.3956941, 47.6758792], [-122.3956799, 47.6765936]], "type": "LineString"}, "id": "2", "properties": {"__folium_color": "#BF616A", "region_id": "9", "route_id": "", "street_edge_id": "37", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3983959, 47.677293, -122.3983847, 47.6780007], "geometry": {"coordinates": [[-122.3983847, 47.677293], [-122.398395, 47.6779469], [-122.3983959, 47.6780007]], "type": "LineString"}, "id": "3", "properties": {"__folium_color": "#BF616A", "region_id": "9", "route_id": "", "street_edge_id": "44", "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-122.3629816, 47.5501047, -122.3617191, 47.5501081], "geometry": {"coordinates": [[-122.3629816, 47.5501056], [-122.362877, 47.5501053], [-122.3624238, 47.5501058], [-122.3623301, 47.5501047], [-122.3617191, 47.5501081]], "type": "LineString"}, "id": "4", "properties": {"__folium_color": "#BF616A", "region_id": "1", "route_id": "", "street_edge_id": "72", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3629923, 47.5498327, -122.3629816, 47.5501056], "geometry": {"coordinates": [[-122.3629816, 47.5501056], [-122.3629845, 47.5500324], [-122.3629877, 47.54995], [-122.3629923, 47.5498327]], "type": "LineString"}, "id": "5", "properties": {"__folium_color": "#BF616A", "region_id": "1", "route_id": "", "street_edge_id": "117", "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-122.3629964, 47.5497261, -122.3629923, 47.5498327], "geometry": {"coordinates": [[-122.3629923, 47.5498327], [-122.3629964, 47.5497261]], "type": "LineString"}, "id": "6", "properties": {"__folium_color": "#BF616A", "region_id": "1", "route_id": "", "street_edge_id": "118", "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-122.3356638, 47.6008902, -122.335501, 47.6008904], "geometry": {"coordinates": [[-122.335501, 47.6008904], [-122.3356638, 47.6008902]], "type": "LineString"}, "id": "7", "properties": {"__folium_color": "#BF616A", "region_id": "8", "route_id": "", "street_edge_id": "181", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3356332, 47.6000485, -122.334836, 47.6000523], "geometry": {"coordinates": [[-122.3356332, 47.6000485], [-122.334836, 47.6000523]], "type": "LineString"}, "id": "8", "properties": {"__folium_color": "#BF616A", "region_id": "8", "route_id": "", "street_edge_id": "184", "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-122.334838, 47.6008912, -122.334237, 47.600892], "geometry": {"coordinates": [[-122.334237, 47.600892], [-122.334374, 47.6008918], [-122.334838, 47.6008912]], "type": "LineString"}, "id": "9", "properties": {"__folium_color": "#BF616A", "region_id": "8", "route_id": "", "street_edge_id": "190", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3356638, 47.6007895, -122.3356316, 47.6008902], "geometry": {"coordinates": [[-122.3356316, 47.6007895], [-122.3356638, 47.6008902]], "type": "LineString"}, "id": "10", "properties": {"__folium_color": "#BF616A", "region_id": "8", "route_id": "", "street_edge_id": "242", "way_type": "primary"}, "type": "Feature"}, {"bbox": [-122.335501, 47.6008904, -122.334838, 47.6008912], "geometry": {"coordinates": [[-122.334838, 47.6008912], [-122.335501, 47.6008904]], "type": "LineString"}, "id": "11", "properties": {"__folium_color": "#BF616A", "region_id": "8", "route_id": "", "street_edge_id": "243", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3356332, 47.6000485, -122.3356156, 47.6007895], "geometry": {"coordinates": [[-122.3356332, 47.6000485], [-122.3356299, 47.6001153], [-122.3356156, 47.6005409], [-122.3356206, 47.6006904], [-122.3356316, 47.6007895]], "type": "LineString"}, "id": "12", "properties": {"__folium_color": "#BF616A", "region_id": "8", "route_id": "", "street_edge_id": "254", "way_type": "primary"}, "type": "Feature"}, {"bbox": [-122.334836, 47.6000523, -122.3342459, 47.6000548], "geometry": {"coordinates": [[-122.334836, 47.6000523], [-122.3343312, 47.6000548], [-122.3342459, 47.6000545]], "type": "LineString"}, "id": "13", "properties": {"__folium_color": "#BF616A", "region_id": "8", "route_id": "", "street_edge_id": "258", "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-122.3607121, 47.6468935, -122.3581578, 47.6468962], "geometry": {"coordinates": [[-122.3581578, 47.6468945], [-122.3602011, 47.6468935], [-122.3606491, 47.6468947], [-122.3607121, 47.6468962]], "type": "LineString"}, "id": "14", "properties": {"__folium_color": "#BF616A", "region_id": "5", "route_id": "", "street_edge_id": "272", "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-122.3609021, 47.6453882, -122.3608921, 47.6455408], "geometry": {"coordinates": [[-122.3609021, 47.6453882], [-122.360894, 47.6455066], [-122.3608921, 47.6455408]], "type": "LineString"}, "id": "15", "properties": {"__folium_color": "#BF616A", "region_id": "5", "route_id": "", "street_edge_id": "282", "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-122.3609, 47.6455408, -122.3608921, 47.6458088], "geometry": {"coordinates": [[-122.3608921, 47.6455408], [-122.3609, 47.6458088]], "type": "LineString"}, "id": "16", "properties": {"__folium_color": "#BF616A", "region_id": "5", "route_id": "", "street_edge_id": "283", "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-122.3609, 47.6458088, -122.3607121, 47.6468962], "geometry": {"coordinates": [[-122.3609, 47.6458088], [-122.3607457, 47.6458902], [-122.3607364, 47.645997], [-122.3607202, 47.6466386], [-122.3607121, 47.6468962]], "type": "LineString"}, "id": "17", "properties": {"__folium_color": "#BF616A", "region_id": "5", "route_id": "", "street_edge_id": "296", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3197943, 47.6595001, -122.3197808, 47.661309], "geometry": {"coordinates": [[-122.3197943, 47.6595001], [-122.3197939, 47.6595127], [-122.3197808, 47.6608465], [-122.3197814, 47.6610104], [-122.3197818, 47.6611221], [-122.3197819, 47.6611492], [-122.3197821, 47.6612093], [-122.3197821, 47.6612271], [-122.3197824, 47.661309]], "type": "LineString"}, "id": "18", "properties": {"__folium_color": "#BF616A", "region_id": "2", "route_id": "", "street_edge_id": "479", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3208069, 47.6608602, -122.3207629, 47.6613125], "geometry": {"coordinates": [[-122.3208069, 47.6608602], [-122.3208067, 47.6610104], [-122.3208013, 47.661079], [-122.3207917, 47.6611482], [-122.3207827, 47.6611893], [-122.3207629, 47.6613125]], "type": "LineString"}, "id": "19", "properties": {"__folium_color": "#BF616A", "region_id": "2", "route_id": "", "street_edge_id": "480", "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-122.3207629, 47.6613115, -122.3204779, 47.6613125], "geometry": {"coordinates": [[-122.3207629, 47.6613125], [-122.3206473, 47.6613121], [-122.3204779, 47.6613115]], "type": "LineString"}, "id": "20", "properties": {"__folium_color": "#BF616A", "region_id": "2", "route_id": "", "street_edge_id": "483", "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-122.3204779, 47.661309, -122.3197824, 47.6613115], "geometry": {"coordinates": [[-122.3204779, 47.6613115], [-122.3201427, 47.6613103], [-122.3197824, 47.661309]], "type": "LineString"}, "id": "21", "properties": {"__folium_color": "#BF616A", "region_id": "2", "route_id": "", "street_edge_id": "486", "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-122.3617855, 47.5519009, -122.3617641, 47.5537221], "geometry": {"coordinates": [[-122.3617641, 47.5537221], [-122.3617701, 47.5529029], [-122.3617816, 47.5527955], [-122.3617823, 47.5527287], [-122.3617838, 47.5521881], [-122.3617855, 47.5519009]], "type": "LineString"}, "id": "22", "properties": {"__folium_color": "#BF616A", "region_id": "1", "route_id": "", "street_edge_id": "497", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3618121, 47.5501081, -122.3617191, 47.5519009], "geometry": {"coordinates": [[-122.3617855, 47.5519009], [-122.3618121, 47.5508661], [-122.3618062, 47.550449], [-122.361793, 47.5503438], [-122.3617783, 47.550275], [-122.3617191, 47.5501081]], "type": "LineString"}, "id": "23", "properties": {"__folium_color": "#BF616A", "region_id": "1", "route_id": "", "street_edge_id": "498", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3472863, 47.6956868, -122.3472831, 47.6963627], "geometry": {"coordinates": [[-122.3472833, 47.6956868], [-122.3472831, 47.6957066], [-122.3472857, 47.6963029], [-122.3472863, 47.6963627]], "type": "LineString"}, "id": "24", "properties": {"__folium_color": "#BF616A", "region_id": "6", "route_id": "", "street_edge_id": "531", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3472891, 47.6963627, -122.3472863, 47.696903], "geometry": {"coordinates": [[-122.3472863, 47.6963627], [-122.3472864, 47.6964324], [-122.3472891, 47.696903]], "type": "LineString"}, "id": "25", "properties": {"__folium_color": "#BF616A", "region_id": "6", "route_id": "", "street_edge_id": "532", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3499673, 47.6949273, -122.3499556, 47.6956536], "geometry": {"coordinates": [[-122.3499556, 47.6949273], [-122.3499651, 47.6954369], [-122.3499673, 47.6956536]], "type": "LineString"}, "id": "26", "properties": {"__folium_color": "#BF616A", "region_id": "6", "route_id": "", "street_edge_id": "542", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3539978, 47.5210217, -122.3529151, 47.5210333], "geometry": {"coordinates": [[-122.3529151, 47.5210217], [-122.3539978, 47.5210333]], "type": "LineString"}, "id": "27", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "599", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3551324, 47.5210333, -122.3539978, 47.5210358], "geometry": {"coordinates": [[-122.3539978, 47.5210333], [-122.3546391, 47.5210347], [-122.3551324, 47.5210358]], "type": "LineString"}, "id": "28", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "600", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3493331, 47.5209595, -122.3492298, 47.520997], "geometry": {"coordinates": [[-122.3493324, 47.520997], [-122.3493331, 47.5209913], [-122.3493289, 47.5209801], [-122.3493196, 47.5209705], [-122.3493062, 47.5209634], [-122.3492901, 47.5209596], [-122.3492814, 47.5209596], [-122.3492731, 47.5209595], [-122.349257, 47.5209632], [-122.3492435, 47.5209703], [-122.349234, 47.5209799], [-122.3492298, 47.5209911]], "type": "LineString"}, "id": "29", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "617", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3492303, 47.5209911, -122.3492298, 47.5209959], "geometry": {"coordinates": [[-122.3492298, 47.5209911], [-122.3492303, 47.5209959]], "type": "LineString"}, "id": "30", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "618", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3492814, 47.5209959, -122.3492303, 47.5210291], "geometry": {"coordinates": [[-122.3492303, 47.5209959], [-122.3492311, 47.5210026], [-122.3492379, 47.5210132], [-122.3492495, 47.5210217], [-122.3492645, 47.5210272], [-122.3492814, 47.5210291]], "type": "LineString"}, "id": "31", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "619", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3505707, 47.520997, -122.3493324, 47.5210041], "geometry": {"coordinates": [[-122.3493324, 47.520997], [-122.3499121, 47.5210002], [-122.3505707, 47.5210041]], "type": "LineString"}, "id": "32", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "620", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.350682, 47.5209645, -122.35057, 47.5210041], "geometry": {"coordinates": [[-122.350682, 47.5210041], [-122.350682, 47.5209963], [-122.3506766, 47.5209849], [-122.3506662, 47.5209752], [-122.3506518, 47.5209681], [-122.3506349, 47.5209645], [-122.3506247, 47.5209645], [-122.3506172, 47.5209645], [-122.3506004, 47.5209683], [-122.3505861, 47.5209753], [-122.350575, 47.5209862], [-122.35057, 47.5209989]], "type": "LineString"}, "id": "33", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "623", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3516585, 47.5210041, -122.350682, 47.5210114], "geometry": {"coordinates": [[-122.350682, 47.5210041], [-122.3511757, 47.521008], [-122.3516585, 47.5210114]], "type": "LineString"}, "id": "34", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "627", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3517746, 47.5210112, -122.3517186, 47.5210471], "geometry": {"coordinates": [[-122.3517186, 47.5210471], [-122.3517387, 47.5210442], [-122.3517561, 47.5210369], [-122.3517677, 47.5210271], [-122.3517743, 47.5210155], [-122.3517746, 47.5210112]], "type": "LineString"}, "id": "35", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "630", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3528014, 47.5210112, -122.3517746, 47.5210212], "geometry": {"coordinates": [[-122.3517746, 47.5210112], [-122.3528014, 47.5210212]], "type": "LineString"}, "id": "36", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "632", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3529151, 47.5210217, -122.3528581, 47.5210601], "geometry": {"coordinates": [[-122.3528581, 47.5210601], [-122.3528774, 47.5210579], [-122.3528945, 47.5210514], [-122.3529067, 47.5210421], [-122.352914, 47.5210307], [-122.3529151, 47.5210217]], "type": "LineString"}, "id": "37", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "633", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3528014, 47.5210158, -122.3528011, 47.5210212], "geometry": {"coordinates": [[-122.3528011, 47.5210158], [-122.3528014, 47.5210212]], "type": "LineString"}, "id": "38", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "635", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.3528581, 47.5210212, -122.3528014, 47.5210601], "geometry": {"coordinates": [[-122.3528014, 47.5210212], [-122.3528017, 47.5210291], [-122.3528089, 47.5210414], [-122.3528218, 47.5210514], [-122.3528388, 47.5210579], [-122.3528581, 47.5210601]], "type": "LineString"}, "id": "39", "properties": {"__folium_color": "#BF616A", "region_id": "4", "route_id": "", "street_edge_id": "636", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.2660379, 47.5406944, -122.2650769, 47.5415812], "geometry": {"coordinates": [[-122.2660379, 47.5406944], [-122.2650769, 47.5415812]], "type": "LineString"}, "id": "40", "properties": {"__folium_color": "#BF616A", "region_id": "7", "route_id": "", "street_edge_id": "666", "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-122.2671764, 47.5415918, -122.2671764, 47.5424349], "geometry": {"coordinates": [[-122.2671764, 47.5424349], [-122.2671764, 47.5420456], [-122.2671764, 47.5415918]], "type": "LineString"}, "id": "41", "properties": {"__folium_color": "#BF616A", "region_id": "7", "route_id": "", "street_edge_id": "693", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.2671764, 47.5424349, -122.2671226, 47.5424627], "geometry": {"coordinates": [[-122.2671764, 47.5424349], [-122.2671546, 47.5424378], [-122.2671361, 47.5424462], [-122.2671238, 47.5424586], [-122.2671226, 47.5424627]], "type": "LineString"}, "id": "42", "properties": {"__folium_color": "#BF616A", "region_id": "7", "route_id": "", "street_edge_id": "698", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.2684841, 47.6718828, -122.2681122, 47.6721286], "geometry": {"coordinates": [[-122.2684841, 47.6718828], [-122.2683617, 47.6719011], [-122.2681558, 47.672041], [-122.2681122, 47.6721286]], "type": "LineString"}, "id": "43", "properties": {"__folium_color": "#BF616A", "region_id": "3", "route_id": "", "street_edge_id": "716", "way_type": "primary"}, "type": "Feature"}, {"bbox": [-122.263488, 47.6684541, -122.2634255, 47.6720582], "geometry": {"coordinates": [[-122.2634358, 47.6684541], [-122.2634255, 47.6685371], [-122.2634344, 47.6699373], [-122.263488, 47.6720582]], "type": "LineString"}, "id": "44", "properties": {"__folium_color": "#BF616A", "region_id": "3", "route_id": "", "street_edge_id": "751", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.2679893, 47.6721043, -122.2645864, 47.6722212], "geometry": {"coordinates": [[-122.2679893, 47.6722212], [-122.2677462, 47.6721088], [-122.266196, 47.6721043], [-122.2645864, 47.6721052]], "type": "LineString"}, "id": "45", "properties": {"__folium_color": "#BF616A", "region_id": "3", "route_id": "", "street_edge_id": "810", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.2645864, 47.6721052, -122.2635628, 47.6721087], "geometry": {"coordinates": [[-122.2645864, 47.6721052], [-122.2635628, 47.6721087]], "type": "LineString"}, "id": "46", "properties": {"__folium_color": "#BF616A", "region_id": "3", "route_id": "", "street_edge_id": "811", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.2671764, 47.5415812, -122.2650769, 47.5415918], "geometry": {"coordinates": [[-122.2671764, 47.5415918], [-122.2657533, 47.5415848], [-122.2650769, 47.5415812]], "type": "LineString"}, "id": "47", "properties": {"__folium_color": "#BF616A", "region_id": "7", "route_id": "", "street_edge_id": "842", "way_type": "residential"}, "type": "Feature"}, {"bbox": [-122.2681122, 47.6721286, -122.2679893, 47.6722212], "geometry": {"coordinates": [[-122.2679893, 47.6722212], [-122.2681122, 47.6721286]], "type": "LineString"}, "id": "48", "properties": {"__folium_color": "#BF616A", "region_id": "3", "route_id": "", "street_edge_id": "851", "way_type": "primary"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_a58325d10fba62730d0e2eb6c944b88a.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["street_edge_id"];
+    let aliases = ["street_edge_id"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_a58325d10fba62730d0e2eb6c944b88a.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["street_edge_id"];
+    let aliases = ["street_edge_id"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+</script>

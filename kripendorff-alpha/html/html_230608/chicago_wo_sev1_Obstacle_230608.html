@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7f575a0cfca3b2d618e912e3ad1327f7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>$( function() {
+        $( ".maplegend" ).draggable({
+            start: function (event, ui) {
+                $(this).css({
+                    right: "auto",
+                    top: "auto",
+                    bottom: "auto"
+                });
+            }
+        });
+    });
+    </script>
+    <style type='text/css'>
+      .maplegend {
+        position: absolute;
+        z-index:9999;
+        background-color: rgba(255, 255, 255, .8);
+        border-radius: 5px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        padding: 10px;
+        font: 12px/14px Arial, Helvetica, sans-serif;
+        right: 10px;
+        bottom: 20px;
+      }
+      .maplegend .legend-title {
+        text-align: left;
+        margin-bottom: 5px;
+        font-weight: bold;
+        }
+      .maplegend .legend-scale ul {
+        margin: 0;
+        margin-bottom: 0px;
+        padding: 0;
+        float: left;
+        list-style: none;
+        }
+      .maplegend .legend-scale ul li {
+        list-style: none;
+        margin-left: 0;
+        line-height: 16px;
+        margin-bottom: 2px;
+        }
+      .maplegend ul.legend-labels li span {
+        display: block;
+        float: left;
+        height: 14px;
+        width: 14px;
+        margin-right: 5px;
+        margin-left: 0;
+        border: 0px solid #ccc;
+        }
+      .maplegend .legend-source {
+        color: #777;
+        clear: both;
+        }
+      .maplegend a {
+        color: #777;
+        }
+    </style>
+    
+</head>
+<body>    
+    
+    <div id='maplegend label_type' class='maplegend'>
+        <div class='legend-title'>label_type</div>
+        <div class='legend-scale'>
+            <ul class='legend-labels'>
+                <li><span style='background:#78B0EA'></span>Obstacle</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+            <div class="folium-map" id="map_7f575a0cfca3b2d618e912e3ad1327f7" ></div>
+        
+</body>
+<script>    
+    
+            var map_7f575a0cfca3b2d618e912e3ad1327f7 = L.map(
+                "map_7f575a0cfca3b2d618e912e3ad1327f7",
+                {
+                    center: [41.83157157897949, -88.02087020874023],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_7f575a0cfca3b2d618e912e3ad1327f7);
+
+            
+
+        
+    
+            var tile_layer_9c934498350899f70e8ad70016ed539d = L.tileLayer(
+                "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_7f575a0cfca3b2d618e912e3ad1327f7);
+        
+    
+            map_7f575a0cfca3b2d618e912e3ad1327f7.fitBounds(
+                [[41.750038146972656, -88.106689453125], [41.91310501098633, -87.93505096435547]],
+                {}
+            );
+        
+    
+        function geo_json_7cf6d76abb47692a57b26345e9f72c8e_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#FFFFFF", "fillColor": "#FFFFFF", "fillOpacity": 0.2, "stroke": true, "weight": 2};
+            }
+        }
+        function geo_json_7cf6d76abb47692a57b26345e9f72c8e_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_7cf6d76abb47692a57b26345e9f72c8e_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1.5, "stroke": true, "weight": 3};
+            
+            let style = geo_json_7cf6d76abb47692a57b26345e9f72c8e_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.circle(latlng, opts)
+        }
+
+        function geo_json_7cf6d76abb47692a57b26345e9f72c8e_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_7cf6d76abb47692a57b26345e9f72c8e.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_7cf6d76abb47692a57b26345e9f72c8e_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_7cf6d76abb47692a57b26345e9f72c8e = L.geoJson(null, {
+                onEachFeature: geo_json_7cf6d76abb47692a57b26345e9f72c8e_onEachFeature,
+            
+                style: geo_json_7cf6d76abb47692a57b26345e9f72c8e_styler,
+                pointToLayer: geo_json_7cf6d76abb47692a57b26345e9f72c8e_pointToLayer
+        });
+
+        function geo_json_7cf6d76abb47692a57b26345e9f72c8e_add (data) {
+            geo_json_7cf6d76abb47692a57b26345e9f72c8e
+                .addData(data)
+                .addTo(map_7f575a0cfca3b2d618e912e3ad1327f7);
+        }
+            geo_json_7cf6d76abb47692a57b26345e9f72c8e_add({"bbox": [-88.106689453125, 41.750038146972656, -87.93505096435547, 41.91310501098633], "features": [{"bbox": [-88.106689453125, 41.889068603515625, -88.106689453125, 41.889068603515625], "geometry": {"coordinates": [-88.106689453125, 41.889068603515625], "type": "Point"}, "id": "29", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 19, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "G31WYuAr_xrgi2elpukCwg", "label_id": 2579, "label_type": "Obstacle", "lat": 41.889068603515625, "lng": -88.106689453125, "neighborhood": "Milton", "severity": 5.0, "street_edge_id": 870, "tag_list": "construction", "temporary": "t", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-88.10615539550781, 41.89087677001953, -88.10615539550781, 41.89087677001953], "geometry": {"coordinates": [-88.10615539550781, 41.89087677001953], "type": "Point"}, "id": "293", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 20, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "Ed_OwJO-7XOpuh3iPbLX-w", "label_id": 2877, "label_type": "Obstacle", "lat": 41.89087677001953, "lng": -88.10615539550781, "neighborhood": "Milton", "severity": 5.0, "street_edge_id": 1014, "tag_list": "construction", "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-87.97343444824219, 41.75206756591797, -87.97343444824219, 41.75206756591797], "geometry": {"coordinates": [-87.97343444824219, 41.75206756591797], "type": "Point"}, "id": "452", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 16, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "PizTdST1dsybe_U0RcyoRA", "label_id": 3046, "label_type": "Obstacle", "lat": 41.75206756591797, "lng": -87.97343444824219, "neighborhood": "Downers Grove North", "severity": null, "street_edge_id": 1188, "tag_list": "litter/garbage", "temporary": "t", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-87.97900390625, 41.7736930847168, -87.97900390625, 41.7736930847168], "geometry": {"coordinates": [-87.97900390625, 41.7736930847168], "type": "Point"}, "id": "581", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 7, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "oH-OqP7JqrZAOAm_YiQuHg", "label_id": 3178, "label_type": "Obstacle", "lat": 41.7736930847168, "lng": -87.97900390625, "neighborhood": "Downers Grove North", "severity": 2.0, "street_edge_id": 867, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-87.97606658935547, 41.77374267578125, -87.97606658935547, 41.77374267578125], "geometry": {"coordinates": [-87.97606658935547, 41.77374267578125], "type": "Point"}, "id": "612", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 4, "clustered": false, "correct": null, "description": "not sure what this is, but it\u0027s a tripping hazard. Seems like the base of a pole or maybe the lid to a utility access point?", "gsv_panorama_id": "YeKxJF7mTEoY9pwyjUWOqg", "label_id": 3209, "label_type": "Obstacle", "lat": 41.77374267578125, "lng": -87.97606658935547, "neighborhood": "Downers Grove North", "severity": 2.0, "street_edge_id": 860, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-87.97430419921875, 41.77068328857422, -87.97430419921875, 41.77068328857422], "geometry": {"coordinates": [-87.97430419921875, 41.77068328857422], "type": "Point"}, "id": "670", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 2, "clustered": false, "correct": null, "description": "this lane divider blocks the pedestrian path slightly because the curb ramps are not directly across from one another", "gsv_panorama_id": "-vO8Gw94dZsAjIRVNRbTfQ", "label_id": 3269, "label_type": "Obstacle", "lat": 41.77068328857422, "lng": -87.97430419921875, "neighborhood": "Downers Grove North", "severity": 2.0, "street_edge_id": 1083, "tag_list": null, "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-88.01285552978516, 41.750038146972656, -88.01285552978516, 41.750038146972656], "geometry": {"coordinates": [-88.01285552978516, 41.750038146972656], "type": "Point"}, "id": "757", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 14, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "A8bIc-aOFkvxRQyrbaD6IA", "label_id": 3358, "label_type": "Obstacle", "lat": 41.750038146972656, "lng": -88.01285552978516, "neighborhood": "Downers Grove North", "severity": 2.0, "street_edge_id": 1161, "tag_list": "narrow,trash/recycling can", "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-87.93549346923828, 41.7629508972168, -87.93549346923828, 41.7629508972168], "geometry": {"coordinates": [-87.93549346923828, 41.7629508972168], "type": "Point"}, "id": "878", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 10, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "l9qKGqJbJEHF7uwXOmhUdg", "label_id": 3481, "label_type": "Obstacle", "lat": 41.7629508972168, "lng": -87.93549346923828, "neighborhood": "Downers Grove North", "severity": 2.0, "street_edge_id": 989, "tag_list": "litter/garbage", "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-88.04218292236328, 41.91310501098633, -88.04218292236328, 41.91310501098633], "geometry": {"coordinates": [-88.04218292236328, 41.91310501098633], "type": "Point"}, "id": "1054", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 17, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "_1iusW_xLwmIYRpUjXuGTA", "label_id": 3662, "label_type": "Obstacle", "lat": 41.91310501098633, "lng": -88.04218292236328, "neighborhood": "Bloomingdale", "severity": 2.0, "street_edge_id": 1235, "tag_list": "vegetation", "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-88.04219055175781, 41.9107780456543, -88.04219055175781, 41.9107780456543], "geometry": {"coordinates": [-88.04219055175781, 41.9107780456543], "type": "Point"}, "id": "1080", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 15, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "2h-lINrf-fPPOWov_IG8SA", "label_id": 3689, "label_type": "Obstacle", "lat": 41.9107780456543, "lng": -88.04219055175781, "neighborhood": "Bloomingdale", "severity": 3.0, "street_edge_id": 1237, "tag_list": "vegetation", "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-87.93505096435547, 41.75899505615234, -87.93505096435547, 41.75899505615234], "geometry": {"coordinates": [-87.93505096435547, 41.75899505615234], "type": "Point"}, "id": "1303", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 11, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "qaXRa-IkyvD38Az2LCNyow", "label_id": 3936, "label_type": "Obstacle", "lat": 41.75899505615234, "lng": -87.93505096435547, "neighborhood": "Downers Grove North", "severity": 2.0, "street_edge_id": 989, "tag_list": "vegetation", "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-87.98273468017578, 41.77336502075195, -87.98273468017578, 41.77336502075195], "geometry": {"coordinates": [-87.98273468017578, 41.77336502075195], "type": "Point"}, "id": "1503", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 8, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "DoOfKstamNshognj5fLtaw", "label_id": 5209, "label_type": "Obstacle", "lat": 41.77336502075195, "lng": -87.98273468017578, "neighborhood": "Downers Grove North", "severity": 4.0, "street_edge_id": 867, "tag_list": "pole", "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-87.9743881225586, 41.77352142333984, -87.9743881225586, 41.77352142333984], "geometry": {"coordinates": [-87.9743881225586, 41.77352142333984], "type": "Point"}, "id": "1601", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 5, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "0tkOhPq9AGupdFJThEOIxQ", "label_id": 5743, "label_type": "Obstacle", "lat": 41.77352142333984, "lng": -87.9743881225586, "neighborhood": "Downers Grove North", "severity": 2.0, "street_edge_id": 1032, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-87.98274230957031, 41.77336502075195, -87.98274230957031, 41.77336502075195], "geometry": {"coordinates": [-87.98274230957031, 41.77336502075195], "type": "Point"}, "id": "1674", "properties": {"__folium_color": "#FFFFFF", "cluster_id": 3, "clustered": false, "correct": null, "description": null, "gsv_panorama_id": "96UQoA0lQK2DRdG0vGuzQg", "label_id": 5823, "label_type": "Obstacle", "lat": 41.77336502075195, "lng": -87.98274230957031, "neighborhood": "Downers Grove North", "severity": 3.0, "street_edge_id": 1006, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_7cf6d76abb47692a57b26345e9f72c8e.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let aliases = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_7cf6d76abb47692a57b26345e9f72c8e.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let aliases = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+    
+        function geo_json_516e3ea021dae615643c192d5c209a72_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#78B0EA", "fillColor": "#78B0EA", "fillOpacity": 0.6, "stroke": true, "weight": 2};
+            }
+        }
+        function geo_json_516e3ea021dae615643c192d5c209a72_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_516e3ea021dae615643c192d5c209a72_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1.5, "stroke": true, "weight": 3};
+            
+            let style = geo_json_516e3ea021dae615643c192d5c209a72_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.circle(latlng, opts)
+        }
+
+        function geo_json_516e3ea021dae615643c192d5c209a72_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_516e3ea021dae615643c192d5c209a72.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_516e3ea021dae615643c192d5c209a72_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_516e3ea021dae615643c192d5c209a72 = L.geoJson(null, {
+                onEachFeature: geo_json_516e3ea021dae615643c192d5c209a72_onEachFeature,
+            
+                style: geo_json_516e3ea021dae615643c192d5c209a72_styler,
+                pointToLayer: geo_json_516e3ea021dae615643c192d5c209a72_pointToLayer
+        });
+
+        function geo_json_516e3ea021dae615643c192d5c209a72_add (data) {
+            geo_json_516e3ea021dae615643c192d5c209a72
+                .addData(data)
+                .addTo(map_7f575a0cfca3b2d618e912e3ad1327f7);
+        }
+            geo_json_516e3ea021dae615643c192d5c209a72_add({"bbox": [-88.10665130615234, 41.75996780395508, -87.93507385253906, 41.97140121459961], "features": [{"bbox": [-88.10665130615234, 41.88965225219727, -88.10665130615234, 41.88965225219727], "geometry": {"coordinates": [-88.10665130615234, 41.88965225219727], "type": "Point"}, "id": "233", "properties": {"__folium_color": "#78B0EA", "cluster_id": 1, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "W1BXBBCz_AVeEWznKkVPow", "label_id": 2816, "label_type": "Obstacle", "lat": 41.88965225219727, "lng": -88.10665130615234, "neighborhood": "Milton", "severity": 5.0, "street_edge_id": 1256, "tag_list": "construction", "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-87.97868347167969, 41.97138595581055, -87.97868347167969, 41.97138595581055], "geometry": {"coordinates": [-87.97868347167969, 41.97138595581055], "type": "Point"}, "id": "393", "properties": {"__folium_color": "#78B0EA", "cluster_id": 9, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "MYfTH_71k66lJxhh7UMGGQ", "label_id": 2984, "label_type": "Obstacle", "lat": 41.97138595581055, "lng": -87.97868347167969, "neighborhood": "Addison", "severity": 3.0, "street_edge_id": 1295, "tag_list": "pole", "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-87.98018646240234, 41.773681640625, -87.98018646240234, 41.773681640625], "geometry": {"coordinates": [-87.98018646240234, 41.773681640625], "type": "Point"}, "id": "556", "properties": {"__folium_color": "#78B0EA", "cluster_id": 6, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "VqXsMyejuv9LSqxptxTVgA", "label_id": 3153, "label_type": "Obstacle", "lat": 41.773681640625, "lng": -87.98018646240234, "neighborhood": "Downers Grove North", "severity": 5.0, "street_edge_id": 867, "tag_list": "vegetation", "temporary": "t", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-87.93539428710938, 41.760040283203125, -87.93539428710938, 41.760040283203125], "geometry": {"coordinates": [-87.93539428710938, 41.760040283203125], "type": "Point"}, "id": "888", "properties": {"__folium_color": "#78B0EA", "cluster_id": 13, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "IpAWF-Vq9R_FhPocXbUQHw", "label_id": 3492, "label_type": "Obstacle", "lat": 41.760040283203125, "lng": -87.93539428710938, "neighborhood": "Downers Grove North", "severity": 4.0, "street_edge_id": 989, "tag_list": "construction", "temporary": "t", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-87.93510437011719, 41.7599983215332, -87.93510437011719, 41.7599983215332], "geometry": {"coordinates": [-87.93510437011719, 41.7599983215332], "type": "Point"}, "id": "889", "properties": {"__folium_color": "#78B0EA", "cluster_id": 12, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "IpAWF-Vq9R_FhPocXbUQHw", "label_id": 3493, "label_type": "Obstacle", "lat": 41.7599983215332, "lng": -87.93510437011719, "neighborhood": "Downers Grove North", "severity": 4.0, "street_edge_id": 989, "tag_list": "construction", "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-88.04225158691406, 41.91834259033203, -88.04225158691406, 41.91834259033203], "geometry": {"coordinates": [-88.04225158691406, 41.91834259033203], "type": "Point"}, "id": "925", "properties": {"__folium_color": "#78B0EA", "cluster_id": 18, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "goCi0YhjBXtbvK88ERsEaQ", "label_id": 3530, "label_type": "Obstacle", "lat": 41.91834259033203, "lng": -88.04225158691406, "neighborhood": "Bloomingdale", "severity": 3.0, "street_edge_id": 1228, "tag_list": "litter/garbage", "temporary": "f", "username": "Devon Snyder"}, "type": "Feature"}, {"bbox": [-88.0422592163086, 41.91835021972656, -88.0422592163086, 41.91835021972656], "geometry": {"coordinates": [-88.0422592163086, 41.91835021972656], "type": "Point"}, "id": "1014", "properties": {"__folium_color": "#78B0EA", "cluster_id": 18, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "goCi0YhjBXtbvK88ERsEaQ", "label_id": 3621, "label_type": "Obstacle", "lat": 41.91835021972656, "lng": -88.0422592163086, "neighborhood": "Bloomingdale", "severity": 2.0, "street_edge_id": 1228, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-87.93540954589844, 41.76002502441406, -87.93540954589844, 41.76002502441406], "geometry": {"coordinates": [-87.93540954589844, 41.76002502441406], "type": "Point"}, "id": "1287", "properties": {"__folium_color": "#78B0EA", "cluster_id": 13, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "NGCeDG7StgYhGvxytOC5Qw", "label_id": 3918, "label_type": "Obstacle", "lat": 41.76002502441406, "lng": -87.93540954589844, "neighborhood": "Downers Grove North", "severity": 5.0, "street_edge_id": 989, "tag_list": "construction", "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-87.93507385253906, 41.75996780395508, -87.93507385253906, 41.75996780395508], "geometry": {"coordinates": [-87.93507385253906, 41.75996780395508], "type": "Point"}, "id": "1288", "properties": {"__folium_color": "#78B0EA", "cluster_id": 12, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "Hes1xursr7vv9cNZeTX7Mg", "label_id": 3919, "label_type": "Obstacle", "lat": 41.75996780395508, "lng": -87.93507385253906, "neighborhood": "Downers Grove North", "severity": 4.0, "street_edge_id": 989, "tag_list": "construction", "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-87.97872161865234, 41.97140121459961, -87.97872161865234, 41.97140121459961], "geometry": {"coordinates": [-87.97872161865234, 41.97140121459961], "type": "Point"}, "id": "1343", "properties": {"__folium_color": "#78B0EA", "cluster_id": 9, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "Rs0-QycN6KLC3BNg26TDfA", "label_id": 3981, "label_type": "Obstacle", "lat": 41.97140121459961, "lng": -87.97872161865234, "neighborhood": "Addison", "severity": 4.0, "street_edge_id": 1295, "tag_list": null, "temporary": "f", "username": "mikey"}, "type": "Feature"}, {"bbox": [-87.98019409179688, 41.77366256713867, -87.98019409179688, 41.77366256713867], "geometry": {"coordinates": [-87.98019409179688, 41.77366256713867], "type": "Point"}, "id": "1527", "properties": {"__folium_color": "#78B0EA", "cluster_id": 6, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "VqXsMyejuv9LSqxptxTVgA", "label_id": 5236, "label_type": "Obstacle", "lat": 41.77366256713867, "lng": -87.98019409179688, "neighborhood": "Downers Grove North", "severity": 3.0, "street_edge_id": 867, "tag_list": "vegetation", "temporary": "t", "username": "mikey"}, "type": "Feature"}, {"bbox": [-88.10662078857422, 41.8896484375, -88.10662078857422, 41.8896484375], "geometry": {"coordinates": [-88.10662078857422, 41.8896484375], "type": "Point"}, "id": "1778", "properties": {"__folium_color": "#78B0EA", "cluster_id": 1, "clustered": true, "correct": null, "description": null, "gsv_panorama_id": "xOkeRkYjczOgUzVkxthwjw", "label_id": 7947, "label_type": "Obstacle", "lat": 41.8896484375, "lng": -88.10662078857422, "neighborhood": "Milton", "severity": 5.0, "street_edge_id": 1256, "tag_list": "construction", "temporary": "t", "username": "Devon Snyder"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_516e3ea021dae615643c192d5c209a72.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let aliases = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_516e3ea021dae615643c192d5c209a72.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let aliases = ["label_type", "username", "label_id", "cluster_id", "severity"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+    
+        function geo_json_079bc0eac5e2a7e295a644ecf0fdace8_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#BF616A", "fillColor": "#BF616A", "fillOpacity": 0.5, "opacity": 0.4, "stroke": true, "weight": 2};
+            }
+        }
+        function geo_json_079bc0eac5e2a7e295a644ecf0fdace8_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_079bc0eac5e2a7e295a644ecf0fdace8_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3};
+            
+            let style = geo_json_079bc0eac5e2a7e295a644ecf0fdace8_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_079bc0eac5e2a7e295a644ecf0fdace8_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_079bc0eac5e2a7e295a644ecf0fdace8.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_079bc0eac5e2a7e295a644ecf0fdace8_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_079bc0eac5e2a7e295a644ecf0fdace8 = L.geoJson(null, {
+                onEachFeature: geo_json_079bc0eac5e2a7e295a644ecf0fdace8_onEachFeature,
+            
+                style: geo_json_079bc0eac5e2a7e295a644ecf0fdace8_styler,
+                pointToLayer: geo_json_079bc0eac5e2a7e295a644ecf0fdace8_pointToLayer
+        });
+
+        function geo_json_079bc0eac5e2a7e295a644ecf0fdace8_add (data) {
+            geo_json_079bc0eac5e2a7e295a644ecf0fdace8
+                .addData(data)
+                .addTo(map_7f575a0cfca3b2d618e912e3ad1327f7);
+        }
+            geo_json_079bc0eac5e2a7e295a644ecf0fdace8_add({"bbox": [-88.1547142, 41.7494021, -87.9351387, 41.9761782], "features": [{"bbox": [-88.1034863, 41.8936948, -88.1027483, 41.8946218], "geometry": {"coordinates": [[-88.1034863, 41.8936948], [-88.1032444, 41.893959], [-88.103114, 41.8941105], [-88.1030569, 41.8941772], [-88.1029407, 41.8943315], [-88.1028345, 41.8944918], [-88.1027483, 41.8946218]], "type": "LineString"}, "id": "0", "properties": {"__folium_color": "#BF616A", "region_id": 19, "route_id": 3, "street_edge_id": 1259, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1044252, 41.8929046, -88.1034863, 41.8936948], "geometry": {"coordinates": [[-88.1044252, 41.8929046], [-88.1040524, 41.89319], [-88.1039055, 41.8933084], [-88.1037826, 41.8934194], [-88.1035911, 41.893588], [-88.103551, 41.8936264], [-88.1034863, 41.8936948]], "type": "LineString"}, "id": "1", "properties": {"__folium_color": "#BF616A", "region_id": 19, "route_id": 3, "street_edge_id": 865, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1046907, 41.8927056, -88.1044252, 41.8929046], "geometry": {"coordinates": [[-88.1046907, 41.8927056], [-88.1044252, 41.8929046]], "type": "LineString"}, "id": "2", "properties": {"__folium_color": "#BF616A", "region_id": 19, "route_id": 3, "street_edge_id": 1260, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1054376, 41.8920545, -88.1046907, 41.8927056], "geometry": {"coordinates": [[-88.1054376, 41.8920545], [-88.1053569, 41.8921328], [-88.1051724, 41.8923112], [-88.105014, 41.8924524], [-88.1048636, 41.8925765], [-88.1046907, 41.8927056]], "type": "LineString"}, "id": "3", "properties": {"__folium_color": "#BF616A", "region_id": 19, "route_id": 3, "street_edge_id": 1261, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.106167, 41.8911257, -88.1054376, 41.8920545], "geometry": {"coordinates": [[-88.106167, 41.8911257], [-88.106072, 41.8912786], [-88.1058834, 41.891536], [-88.1057845, 41.8916647], [-88.1057224, 41.8917378], [-88.1055694, 41.8919138], [-88.1054376, 41.8920545]], "type": "LineString"}, "id": "4", "properties": {"__folium_color": "#BF616A", "region_id": 19, "route_id": 3, "street_edge_id": 1257, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.106597, 41.8902517, -88.1062584, 41.890964], "geometry": {"coordinates": [[-88.106597, 41.8902517], [-88.1065687, 41.8903214], [-88.1065243, 41.8904354], [-88.1064761, 41.890541], [-88.106441, 41.8906154], [-88.1063557, 41.8907917], [-88.1062584, 41.890964]], "type": "LineString"}, "id": "5", "properties": {"__folium_color": "#BF616A", "region_id": 19, "route_id": 3, "street_edge_id": 1014, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1062584, 41.890964, -88.106167, 41.8911257], "geometry": {"coordinates": [[-88.1062584, 41.890964], [-88.106167, 41.8911257]], "type": "LineString"}, "id": "6", "properties": {"__folium_color": "#BF616A", "region_id": 19, "route_id": 3, "street_edge_id": 1258, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1066226, 41.8901758, -88.106597, 41.8902517], "geometry": {"coordinates": [[-88.1066226, 41.8901758], [-88.106597, 41.8902517]], "type": "LineString"}, "id": "7", "properties": {"__folium_color": "#BF616A", "region_id": 19, "route_id": 3, "street_edge_id": 1255, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1068349, 41.8881012, -88.1068069, 41.8893562], "geometry": {"coordinates": [[-88.1068349, 41.8881012], [-88.1068339, 41.8882323], [-88.106833, 41.8883656], [-88.1068313, 41.8885928], [-88.1068305, 41.8887051], [-88.1068312, 41.8887951], [-88.1068301, 41.888918], [-88.1068307, 41.8889618], [-88.1068277, 41.8890749], [-88.106815, 41.8892629], [-88.1068069, 41.8893562]], "type": "LineString"}, "id": "8", "properties": {"__folium_color": "#BF616A", "region_id": 19, "route_id": 3, "street_edge_id": 870, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1067968, 41.8894595, -88.1067704, 41.8896462], "geometry": {"coordinates": [[-88.1067968, 41.8894595], [-88.1067842, 41.8895657], [-88.1067704, 41.8896462]], "type": "LineString"}, "id": "9", "properties": {"__folium_color": "#BF616A", "region_id": 19, "route_id": 3, "street_edge_id": 1025, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1068069, 41.8893562, -88.1067968, 41.8894595], "geometry": {"coordinates": [[-88.1068069, 41.8893562], [-88.1067968, 41.8894595]], "type": "LineString"}, "id": "10", "properties": {"__folium_color": "#BF616A", "region_id": 19, "route_id": 3, "street_edge_id": 1015, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1067704, 41.8896462, -88.1066226, 41.8901758], "geometry": {"coordinates": [[-88.1067704, 41.8896462], [-88.1067246, 41.8898239], [-88.1066477, 41.8900935], [-88.1066226, 41.8901758]], "type": "LineString"}, "id": "11", "properties": {"__folium_color": "#BF616A", "region_id": 19, "route_id": 3, "street_edge_id": 1256, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1488053, 41.8013693, -88.14680333657815, 41.80140543873862], "geometry": {"coordinates": [[-88.1488053, 41.8013693], [-88.1470421, 41.8013972], [-88.1468705, 41.8014004], [-88.14680333657815, 41.80140543873862]], "type": "LineString"}, "id": "12", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 996, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1489622, 41.8013657, -88.1488053, 41.8013693], "geometry": {"coordinates": [[-88.1489622, 41.8013657], [-88.1488053, 41.8013693]], "type": "LineString"}, "id": "13", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 1113, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1505371, 41.8013378, -88.1489622, 41.8013657], "geometry": {"coordinates": [[-88.1505371, 41.8013378], [-88.1489622, 41.8013657]], "type": "LineString"}, "id": "14", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 929, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1508859, 41.8013308, -88.1505371, 41.8013378], "geometry": {"coordinates": [[-88.1508859, 41.8013308], [-88.1505371, 41.8013378]], "type": "LineString"}, "id": "15", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 934, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1517214, 41.8013102, -88.1508859, 41.8013308], "geometry": {"coordinates": [[-88.1517214, 41.8013102], [-88.1508859, 41.8013308]], "type": "LineString"}, "id": "16", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 932, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1547142, 41.8012515, -88.1517214, 41.8013102], "geometry": {"coordinates": [[-88.1547142, 41.8012515], [-88.1545608, 41.8012571], [-88.1539362, 41.8012733], [-88.1534762, 41.8012852], [-88.1523284, 41.8013049], [-88.1517214, 41.8013102]], "type": "LineString"}, "id": "17", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 940, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1547142, 41.8012515, -88.1547117, 41.801366], "geometry": {"coordinates": [[-88.1547117, 41.801366], [-88.1547142, 41.8012515]], "type": "LineString"}, "id": "18", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 1037, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1547117, 41.801366, -88.1533695, 41.8014017], "geometry": {"coordinates": [[-88.1533695, 41.8014017], [-88.1545011, 41.8013741], [-88.1545582, 41.8013719], [-88.1547117, 41.801366]], "type": "LineString"}, "id": "19", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 938, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1533695, 41.8014017, -88.1489582, 41.8014801], "geometry": {"coordinates": [[-88.1489582, 41.8014801], [-88.1508897, 41.8014464], [-88.1523937, 41.8014187], [-88.1524829, 41.8014186], [-88.1533695, 41.8014017]], "type": "LineString"}, "id": "20", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 939, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1489582, 41.8014801, -88.1488045, 41.801483], "geometry": {"coordinates": [[-88.1488045, 41.801483], [-88.1489582, 41.8014801]], "type": "LineString"}, "id": "21", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 1115, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1488045, 41.801483, -88.1483493, 41.8014916], "geometry": {"coordinates": [[-88.1483493, 41.8014916], [-88.1488045, 41.801483]], "type": "LineString"}, "id": "22", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 926, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1483493, 41.8014916, -88.1479045, 41.8014969], "geometry": {"coordinates": [[-88.1479045, 41.8014969], [-88.1483493, 41.8014916]], "type": "LineString"}, "id": "23", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 930, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1479045, 41.8014969, -88.1476455, 41.801503], "geometry": {"coordinates": [[-88.1476455, 41.801503], [-88.1479045, 41.8014969]], "type": "LineString"}, "id": "24", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 1114, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1476455, 41.801503, -88.14680154866471, 41.8015210571397], "geometry": {"coordinates": [[-88.14680154866471, 41.8015210571397], [-88.1469986, 41.8015144], [-88.1476455, 41.801503]], "type": "LineString"}, "id": "25", "properties": {"__folium_color": "#BF616A", "region_id": 20, "route_id": 4, "street_edge_id": 1306, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1186475, 41.9392773, -88.116409, 41.9393087], "geometry": {"coordinates": [[-88.1186475, 41.9393087], [-88.1185055, 41.9393071], [-88.1182129, 41.9393044], [-88.1175464, 41.9392871], [-88.1172161, 41.9392892], [-88.1167244, 41.9392821], [-88.116409, 41.9392773]], "type": "LineString"}, "id": "26", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 5, "street_edge_id": 1071, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.116409, 41.9392514, -88.1149728, 41.9392773], "geometry": {"coordinates": [[-88.116409, 41.9392773], [-88.1149728, 41.9392514]], "type": "LineString"}, "id": "27", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 5, "street_edge_id": 889, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1149728, 41.939195, -88.1121683, 41.9392514], "geometry": {"coordinates": [[-88.1149728, 41.9392514], [-88.1137565, 41.9392269], [-88.1130859, 41.9392134], [-88.1125483, 41.9392026], [-88.1124395, 41.9392005], [-88.1121683, 41.939195]], "type": "LineString"}, "id": "28", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 5, "street_edge_id": 898, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1121683, 41.9391635, -88.1107413, 41.939195], "geometry": {"coordinates": [[-88.1121683, 41.939195], [-88.1107413, 41.9391635]], "type": "LineString"}, "id": "29", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 5, "street_edge_id": 894, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.113787, 41.9392962, -88.1107328, 41.9393421], "geometry": {"coordinates": [[-88.1107328, 41.9392962], [-88.1123552, 41.9393248], [-88.1125858, 41.9393289], [-88.1133074, 41.9393416], [-88.113787, 41.9393421]], "type": "LineString"}, "id": "30", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 5, "street_edge_id": 905, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1150655, 41.9393421, -88.113787, 41.939366], "geometry": {"coordinates": [[-88.113787, 41.9393421], [-88.1140825, 41.9393475], [-88.1149001, 41.9393629], [-88.1150655, 41.939366]], "type": "LineString"}, "id": "31", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 5, "street_edge_id": 900, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1176332, 41.939366, -88.1150655, 41.9394319], "geometry": {"coordinates": [[-88.1150655, 41.939366], [-88.1158435, 41.9393814], [-88.1158764, 41.939382], [-88.1159441, 41.9393836], [-88.1167025, 41.939402], [-88.1167174, 41.9394025], [-88.1172073, 41.9394182], [-88.1176332, 41.9394319]], "type": "LineString"}, "id": "32", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 5, "street_edge_id": 914, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1186532, 41.9394319, -88.1176332, 41.9394571], "geometry": {"coordinates": [[-88.1176332, 41.9394319], [-88.1179557, 41.9394398], [-88.1184997, 41.9394538], [-88.1186532, 41.9394571]], "type": "LineString"}, "id": "33", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 5, "street_edge_id": 907, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.1186532, 41.9393087, -88.1186475, 41.9394571], "geometry": {"coordinates": [[-88.1186475, 41.9393087], [-88.1186532, 41.9394571]], "type": "LineString"}, "id": "34", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 5, "street_edge_id": 985, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9796539, 41.972999, -87.979273, 41.9761782], "geometry": {"coordinates": [[-87.979273, 41.972999], [-87.979411, 41.973567], [-87.979471, 41.973811], [-87.97952, 41.974071], [-87.9795538, 41.9744246], [-87.9795656, 41.9745474], [-87.9795743, 41.9746589], [-87.979577, 41.97468], [-87.9796052, 41.9752291], [-87.9796539, 41.9761782]], "type": "LineString"}, "id": "35", "properties": {"__folium_color": "#BF616A", "region_id": 27, "route_id": 6, "street_edge_id": 1085, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.979273, 41.965379, -87.978805, 41.972999], "geometry": {"coordinates": [[-87.9788344, 41.965379], [-87.978834, 41.965588], [-87.9788335, 41.9656646], [-87.9788327, 41.9657852], [-87.9788311, 41.9660235], [-87.9788293, 41.9663026], [-87.9788277, 41.966543], [-87.9788264, 41.9667497], [-87.978825, 41.966957], [-87.9788162, 41.9675953], [-87.97881, 41.968618], [-87.978805, 41.969057], [-87.978805, 41.969257], [-87.978805, 41.969513], [-87.9788061, 41.9698041], [-87.978809, 41.970288], [-87.9788106, 41.9704807], [-87.9788124, 41.9706853], [-87.978812, 41.970851], [-87.9788238, 41.9712807], [-87.97883, 41.971373], [-87.978904, 41.971578], [-87.9790149, 41.9720278], [-87.9790945, 41.9723506], [-87.9791799, 41.972697], [-87.97921, 41.972819], [-87.979273, 41.972999]], "type": "LineString"}, "id": "36", "properties": {"__folium_color": "#BF616A", "region_id": 27, "route_id": 6, "street_edge_id": 1295, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9737652, 41.7519389, -87.9727336, 41.7519607], "geometry": {"coordinates": [[-87.9727336, 41.7519607], [-87.9729843, 41.7519559], [-87.9734485, 41.7519458], [-87.9735814, 41.7519429], [-87.9737652, 41.7519389]], "type": "LineString"}, "id": "37", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 7, "street_edge_id": 1188, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9727336, 41.7519607, -87.9720338, 41.7519742], "geometry": {"coordinates": [[-87.9720338, 41.7519742], [-87.972248, 41.7519701], [-87.9727336, 41.7519607]], "type": "LineString"}, "id": "38", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 7, "street_edge_id": 1180, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9720338, 41.7519742, -87.9716526, 41.7519816], "geometry": {"coordinates": [[-87.9716526, 41.7519816], [-87.9720338, 41.7519742]], "type": "LineString"}, "id": "39", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 7, "street_edge_id": 1181, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9716526, 41.7519816, -87.96686, 41.7520729], "geometry": {"coordinates": [[-87.96686, 41.7520729], [-87.9691572, 41.7520431], [-87.9706907, 41.7520001], [-87.9715322, 41.7519839], [-87.9716526, 41.7519816]], "type": "LineString"}, "id": "40", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 7, "street_edge_id": 990, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9670652, 41.7519959, -87.96686, 41.7520729], "geometry": {"coordinates": [[-87.9670652, 41.7519959], [-87.96686, 41.7520729]], "type": "LineString"}, "id": "41", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 7, "street_edge_id": 1189, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.967173, 41.7519517, -87.9670652, 41.7519959], "geometry": {"coordinates": [[-87.967173, 41.7519517], [-87.9670652, 41.7519959]], "type": "LineString"}, "id": "42", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 7, "street_edge_id": 1187, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9673549, 41.7518786, -87.967173, 41.7519517], "geometry": {"coordinates": [[-87.9673549, 41.7518786], [-87.967173, 41.7519517]], "type": "LineString"}, "id": "43", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 7, "street_edge_id": 991, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9690674, 41.7518375, -87.9673549, 41.7518786], "geometry": {"coordinates": [[-87.9690674, 41.7518375], [-87.9689266, 41.7518405], [-87.9683671, 41.751852], [-87.9677107, 41.7518629], [-87.9673549, 41.7518786]], "type": "LineString"}, "id": "44", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 7, "street_edge_id": 1186, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9694598, 41.751829, -87.9690674, 41.7518375], "geometry": {"coordinates": [[-87.9694598, 41.751829], [-87.9690674, 41.7518375]], "type": "LineString"}, "id": "45", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 7, "street_edge_id": 1184, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9704751, 41.7518098, -87.9694598, 41.751829], "geometry": {"coordinates": [[-87.9704751, 41.7518098], [-87.9703832, 41.7518107], [-87.970119, 41.7518132], [-87.9694598, 41.751829]], "type": "LineString"}, "id": "46", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 7, "street_edge_id": 1185, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.97376, 41.7517524, -87.9704751, 41.7518098], "geometry": {"coordinates": [[-87.97376, 41.7517524], [-87.9735754, 41.751757], [-87.9730845, 41.7517678], [-87.9706781, 41.7518079], [-87.9704751, 41.7518098]], "type": "LineString"}, "id": "47", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 7, "street_edge_id": 1183, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9737652, 41.7517524, -87.97376, 41.7519389], "geometry": {"coordinates": [[-87.97376, 41.7517524], [-87.9737652, 41.7519389]], "type": "LineString"}, "id": "48", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 7, "street_edge_id": 1178, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.984255, 41.77347, -87.9835796, 41.7734834], "geometry": {"coordinates": [[-87.9835796, 41.7734834], [-87.984255, 41.77347]], "type": "LineString"}, "id": "49", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 8, "street_edge_id": 1007, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9835796, 41.7734834, -87.98274, 41.7735], "geometry": {"coordinates": [[-87.98274, 41.7735], [-87.9828999, 41.7734968], [-87.983357, 41.7734878], [-87.9835796, 41.7734834]], "type": "LineString"}, "id": "50", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 8, "street_edge_id": 1006, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.98274, 41.7735, -87.977165, 41.7736051], "geometry": {"coordinates": [[-87.977165, 41.7736051], [-87.9772776, 41.7736038], [-87.9775892, 41.7736001], [-87.978971, 41.7735765], [-87.979283, 41.7735675], [-87.979614, 41.7735598], [-87.9801144, 41.7735481], [-87.9803488, 41.7735426], [-87.9805735, 41.7735386], [-87.9811904, 41.7735276], [-87.9813169, 41.7735254], [-87.9813591, 41.7735246], [-87.9814339, 41.7735233], [-87.9816742, 41.773519], [-87.9817322, 41.773518], [-87.9821595, 41.7735103], [-87.98274, 41.7735]], "type": "LineString"}, "id": "51", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 8, "street_edge_id": 867, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.977165, 41.7736051, -87.9745696, 41.773658], "geometry": {"coordinates": [[-87.9745696, 41.773658], [-87.9748289, 41.773652], [-87.9749001, 41.7736505], [-87.9750486, 41.7736475], [-87.9753599, 41.7736413], [-87.9758161, 41.7736322], [-87.9760503, 41.7736275], [-87.9763219, 41.773622], [-87.9764074, 41.7736203], [-87.976819, 41.773612], [-87.9769814, 41.7736088], [-87.977165, 41.7736051]], "type": "LineString"}, "id": "52", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 8, "street_edge_id": 860, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9745696, 41.7709056, -87.9744778, 41.773658], "geometry": {"coordinates": [[-87.9745696, 41.773658], [-87.9745597, 41.7733612], [-87.9745526, 41.773147], [-87.9745503, 41.7730789], [-87.9745456, 41.7729379], [-87.9745408, 41.772793], [-87.9745399, 41.7727669], [-87.9745305, 41.7724849], [-87.9745261, 41.7723552], [-87.9745182, 41.7721178], [-87.9745158, 41.7720447], [-87.9745119, 41.7719277], [-87.9745029, 41.7716586], [-87.9744992, 41.7715487], [-87.9744899, 41.7712697], [-87.9744778, 41.7709056]], "type": "LineString"}, "id": "53", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 8, "street_edge_id": 1302, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9744778, 41.7708466, -87.9744758, 41.7709056], "geometry": {"coordinates": [[-87.9744778, 41.7709056], [-87.9744758, 41.7708466]], "type": "LineString"}, "id": "54", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 8, "street_edge_id": 1084, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9744758, 41.7707651, -87.9744731, 41.7708466], "geometry": {"coordinates": [[-87.9744758, 41.7708466], [-87.9744731, 41.7707651]], "type": "LineString"}, "id": "55", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 8, "street_edge_id": 1082, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9744731, 41.770616, -87.9744681, 41.7707651], "geometry": {"coordinates": [[-87.9744731, 41.7707651], [-87.9744681, 41.770616]], "type": "LineString"}, "id": "56", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 8, "street_edge_id": 1083, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9744681, 41.7705596, -87.9744662, 41.770616], "geometry": {"coordinates": [[-87.9744681, 41.770616], [-87.9744662, 41.7705596]], "type": "LineString"}, "id": "57", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 8, "street_edge_id": 1081, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9744662, 41.7704134, -87.9744614, 41.7705596], "geometry": {"coordinates": [[-87.9744662, 41.7705596], [-87.9744614, 41.7704134]], "type": "LineString"}, "id": "58", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 8, "street_edge_id": 1080, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9744614, 41.7694129, -87.974428, 41.7704134], "geometry": {"coordinates": [[-87.9744614, 41.7704134], [-87.9744483, 41.7700228], [-87.974428, 41.7694129]], "type": "LineString"}, "id": "59", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 8, "street_edge_id": 1079, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0125892, 41.7498076, -88.0125827, 41.7502406], "geometry": {"coordinates": [[-88.0125827, 41.7498076], [-88.0125855, 41.7499019], [-88.0125892, 41.7502406]], "type": "LineString"}, "id": "60", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1164, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0126143, 41.7502406, -88.0125892, 41.7510289], "geometry": {"coordinates": [[-88.0125892, 41.7502406], [-88.0126112, 41.7508491], [-88.0126124, 41.7508905], [-88.0126143, 41.7510289]], "type": "LineString"}, "id": "61", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1165, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0126219, 41.7510289, -88.0126143, 41.7512179], "geometry": {"coordinates": [[-88.0126143, 41.7510289], [-88.0126219, 41.7512179]], "type": "LineString"}, "id": "62", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1040, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0128175, 41.7512157, -88.0126219, 41.7512179], "geometry": {"coordinates": [[-88.0126219, 41.7512179], [-88.0128175, 41.7512157]], "type": "LineString"}, "id": "63", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1023, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.012805, 41.7510251, -88.0126143, 41.7510289], "geometry": {"coordinates": [[-88.012805, 41.7510251], [-88.0126143, 41.7510289]], "type": "LineString"}, "id": "64", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1021, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0128175, 41.7510251, -88.012805, 41.7512157], "geometry": {"coordinates": [[-88.0128175, 41.7512157], [-88.012805, 41.7510251]], "type": "LineString"}, "id": "65", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1020, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.012805, 41.7502366, -88.0127734, 41.7510251], "geometry": {"coordinates": [[-88.012805, 41.7510251], [-88.0128035, 41.75088], [-88.0127842, 41.7504399], [-88.0127734, 41.7502366]], "type": "LineString"}, "id": "66", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1022, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0175631, 41.7511171, -88.0152183, 41.7511643], "geometry": {"coordinates": [[-88.0152183, 41.7511643], [-88.0162437, 41.7511442], [-88.0173171, 41.7511224], [-88.0173508, 41.7511217], [-88.0175631, 41.7511171]], "type": "LineString"}, "id": "67", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1166, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0175593, 41.7509261, -88.0154643, 41.7509717], "geometry": {"coordinates": [[-88.0175593, 41.7509261], [-88.0173453, 41.7509305], [-88.0156147, 41.7509684], [-88.0154643, 41.7509717]], "type": "LineString"}, "id": "68", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1157, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0152183, 41.7511643, -88.0128175, 41.7512157], "geometry": {"coordinates": [[-88.0128175, 41.7512157], [-88.0130393, 41.7512108], [-88.0135128, 41.751196], [-88.0152183, 41.7511643]], "type": "LineString"}, "id": "69", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1167, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0153485, 41.7509739, -88.0141449, 41.7509988], "geometry": {"coordinates": [[-88.0153485, 41.7509739], [-88.0141449, 41.7509988]], "type": "LineString"}, "id": "70", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1159, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0154643, 41.7509717, -88.0153485, 41.7509739], "geometry": {"coordinates": [[-88.0154643, 41.7509717], [-88.0153485, 41.7509739]], "type": "LineString"}, "id": "71", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1158, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0141449, 41.7509988, -88.012805, 41.7510251], "geometry": {"coordinates": [[-88.0141449, 41.7509988], [-88.013323, 41.7510159], [-88.0130773, 41.7510201], [-88.0130461, 41.7510206], [-88.012805, 41.7510251]], "type": "LineString"}, "id": "72", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1160, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0127734, 41.7494021, -88.0127274, 41.7502366], "geometry": {"coordinates": [[-88.0127734, 41.7502366], [-88.0127699, 41.7502073], [-88.012764, 41.7501585], [-88.0127497, 41.7500018], [-88.0127329, 41.7495293], [-88.0127274, 41.7494021]], "type": "LineString"}, "id": "73", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1161, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-88.0125827, 41.749404, -88.0125706, 41.7498076], "geometry": {"coordinates": [[-88.0125706, 41.749404], [-88.0125827, 41.7498076]], "type": "LineString"}, "id": "74", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 10, "street_edge_id": 1163, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.9434911, 41.761257, -87.935402, 41.764366], "geometry": {"coordinates": [[-87.935402, 41.764366], [-87.9356517, 41.7642707], [-87.9358447, 41.764197], [-87.9365941, 41.7639111], [-87.9370392, 41.7637412], [-87.9373648, 41.763617], [-87.9374858, 41.7635708], [-87.9376689, 41.7635009], [-87.9384164, 41.7632156], [-87.9385488, 41.7631651], [-87.9402026, 41.762534], [-87.9408308, 41.7622943], [-87.9409884, 41.7622341], [-87.9414085, 41.7620738], [-87.9415543, 41.7620182], [-87.9418597, 41.7619016], [-87.9424314, 41.7616834], [-87.9434911, 41.761257]], "type": "LineString"}, "id": "75", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 11, "street_edge_id": 1010, "way_type": "secondary"}, "type": "Feature"}, {"bbox": [-87.935402, 41.7570218, -87.9351387, 41.764366], "geometry": {"coordinates": [[-87.935402, 41.764366], [-87.935399, 41.7642438], [-87.9353768, 41.7633236], [-87.935373, 41.7632301], [-87.9353721, 41.7631993], [-87.9353008, 41.761514], [-87.935299, 41.761462], [-87.9352972, 41.7614129], [-87.935264, 41.760513], [-87.9352437, 41.7598472], [-87.9352167, 41.7591618], [-87.935192, 41.758577], [-87.935181, 41.758286], [-87.935172, 41.758052], [-87.935145, 41.757341], [-87.9351387, 41.7570218]], "type": "LineString"}, "id": "76", "properties": {"__folium_color": "#BF616A", "region_id": 21, "route_id": 11, "street_edge_id": 989, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423492, 41.9194402, -88.0423436, 41.9196862], "geometry": {"coordinates": [[-88.0423436, 41.9196862], [-88.0423492, 41.9194402]], "type": "LineString"}, "id": "77", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1230, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423552, 41.9190963, -88.0423506, 41.9193809], "geometry": {"coordinates": [[-88.0423506, 41.9193809], [-88.0423552, 41.9190963]], "type": "LineString"}, "id": "78", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1226, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423506, 41.9193809, -88.0423492, 41.9194402], "geometry": {"coordinates": [[-88.0423492, 41.9194402], [-88.0423506, 41.9193809]], "type": "LineString"}, "id": "79", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1229, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423585, 41.9188933, -88.0423552, 41.9190963], "geometry": {"coordinates": [[-88.0423552, 41.9190963], [-88.0423585, 41.9188933]], "type": "LineString"}, "id": "80", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1227, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.042361, 41.9187375, -88.0423585, 41.9188933], "geometry": {"coordinates": [[-88.0423585, 41.9188933], [-88.042361, 41.9187375]], "type": "LineString"}, "id": "81", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1225, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.042361, 41.9182339, -88.04236, 41.9187375], "geometry": {"coordinates": [[-88.042361, 41.9187375], [-88.0423604, 41.9184472], [-88.04236, 41.9182339]], "type": "LineString"}, "id": "82", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1228, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423637, 41.9178405, -88.04236, 41.9182339], "geometry": {"coordinates": [[-88.04236, 41.9182339], [-88.0423637, 41.9178405]], "type": "LineString"}, "id": "83", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1223, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423694, 41.9169, -88.0423637, 41.9178405], "geometry": {"coordinates": [[-88.0423637, 41.9178405], [-88.0423694, 41.9172221], [-88.0423652, 41.9169]], "type": "LineString"}, "id": "84", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1224, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.042367, 41.916167, -88.0423652, 41.9169], "geometry": {"coordinates": [[-88.0423652, 41.9169], [-88.0423662, 41.9164993], [-88.042367, 41.916167]], "type": "LineString"}, "id": "85", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1233, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.042367, 41.9160058, -88.0423661, 41.916167], "geometry": {"coordinates": [[-88.042367, 41.916167], [-88.0423662, 41.916017], [-88.0423661, 41.9160058]], "type": "LineString"}, "id": "86", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1232, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423661, 41.915068, -88.0423608, 41.9160058], "geometry": {"coordinates": [[-88.0423661, 41.9160058], [-88.0423608, 41.915068]], "type": "LineString"}, "id": "87", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1231, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423608, 41.9141666, -88.0423602, 41.915068], "geometry": {"coordinates": [[-88.0423608, 41.915068], [-88.0423607, 41.9148971], [-88.0423603, 41.9143362], [-88.0423602, 41.9141666]], "type": "LineString"}, "id": "88", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1039, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423609, 41.913233, -88.0423597, 41.9141666], "geometry": {"coordinates": [[-88.0423602, 41.9141666], [-88.04236, 41.9138981], [-88.0423597, 41.9134683], [-88.0423609, 41.913233]], "type": "LineString"}, "id": "89", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1234, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423609, 41.9123278, -88.0423537, 41.913233], "geometry": {"coordinates": [[-88.0423609, 41.913233], [-88.042356, 41.9126202], [-88.0423554, 41.9125334], [-88.0423537, 41.9123278]], "type": "LineString"}, "id": "90", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1235, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423537, 41.9114055, -88.0423505, 41.9123278], "geometry": {"coordinates": [[-88.0423537, 41.9123278], [-88.0423535, 41.9122639], [-88.0423526, 41.9120049], [-88.0423524, 41.9119568], [-88.0423505, 41.9114055]], "type": "LineString"}, "id": "91", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1236, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423505, 41.9104963, -88.0423372, 41.9114055], "geometry": {"coordinates": [[-88.0423505, 41.9114055], [-88.0423372, 41.9104963]], "type": "LineString"}, "id": "92", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1237, "way_type": "tertiary"}, "type": "Feature"}, {"bbox": [-88.0423372, 41.910214, -88.042333, 41.9104963], "geometry": {"coordinates": [[-88.0423372, 41.9104963], [-88.042333, 41.910214]], "type": "LineString"}, "id": "93", "properties": {"__folium_color": "#BF616A", "region_id": 25, "route_id": 12, "street_edge_id": 1238, "way_type": "tertiary"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_079bc0eac5e2a7e295a644ecf0fdace8.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["street_edge_id"];
+    let aliases = ["street_edge_id"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+</script>
